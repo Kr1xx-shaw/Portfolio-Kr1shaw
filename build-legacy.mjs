@@ -7,4 +7,3 @@ const names=['index.html','gallery.css','intro.css','portfolio-pages.css','about
 const assets=Object.fromEntries(names.filter(n=>(!n.startsWith('assets/st-')||stockUsed.has(path.basename(n)))&&!retiredAssets.has(path.basename(n))).map(n=>['/'+n,{data:fs.readFileSync('dist/'+n).toString('base64'),etag:'"'+crypto.createHash('sha256').update(fs.readFileSync('dist/'+n)).digest('hex').slice(0,24)+'"',type:types[path.extname(n)]||'application/octet-stream'}]));
 fs.mkdirSync('dist/server',{recursive:true});fs.writeFileSync('dist/server/index.js',fs.readFileSync('worker.mjs','utf8').replace(/\nexport default \{fetch:\(request,env,ctx\)=>handle\(request,env,\{\},ctx\)\};\s*$/, '')+'\nconst assets='+JSON.stringify(assets)+';\nexport default {fetch:(request,env,ctx)=>handle(request,env,assets,ctx)};');
 console.log('Packaged',names.length,'assets and persistent project upload routes.');
-
