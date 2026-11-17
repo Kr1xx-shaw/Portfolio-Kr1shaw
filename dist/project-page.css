@@ -15,7 +15,15 @@
 .case-scroll{position:fixed;left:1.1%;bottom:2%;font-size:11px;color:#777;pointer-events:none}
 .case-empty{padding-top:28dvh;color:#777;font-size:12px;margin:0;min-height:70dvh}
 @media(max-width:700px){
- .case-page{padding-bottom:65px}.case-info{position:relative;left:auto;top:auto;width:auto;max-height:none;margin:0 7% 45px 13%;padding-top:180px;overflow:visible;font-size:11px}
+ .case-page{padding-bottom:65px}.case-info{position:relative;left:auto;top:auto;width:auto;max-height:none;margin:0 7% 32px;padding-top:20px;overflow:visible;font-size:12px;line-height:1.5}
+ .case-page .site-chrome{position:relative;inset:auto;height:148px;background:#ededed}
+ .case-page .site-brand{left:7%;top:20px;writing-mode:horizontal-tb;transform:none;font-size:20px}
+ .case-page .site-copyright{left:7%;top:48px;writing-mode:horizontal-tb;font-size:8px}
+ .case-page .site-menu-label{display:none}
+ .case-page .site-chrome .site-nav{left:7%;right:7%;top:82px;flex-direction:row;justify-content:flex-start;gap:18px}
+ .case-page .site-chrome .site-nav a{font-size:20px;min-height:44px;display:flex;align-items:center}
+ .case-page .site-location,.case-page .site-email{display:none}
+ body.case-mode .language-toggle{left:auto;right:7%;top:16px}
  .case-info h1{margin:0 0 26px;font-size:24px}.case-info dl>div{grid-template-columns:20% 80%;margin-bottom:24px}.case-back{margin-left:20%;font-size:13px}
  .case-gallery{width:auto;margin:0 7%;padding-top:0;padding-bottom:55px}.case-figure{margin-bottom:32px}
  .case-thumbnails{left:7%;right:7%;bottom:44px;top:auto;transform:none;width:auto;max-height:58px;flex-direction:row;justify-content:center;gap:8px;padding:5px 8px;background:#edededee}
