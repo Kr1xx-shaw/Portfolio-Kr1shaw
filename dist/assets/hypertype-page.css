@@ -1,0 +1,24 @@
+/* HYPERTYPE: social applications and speaker identities in the same document. */
+.ht-section{background:#f2f1ed;color:#202123;font-family:Arial,"Microsoft YaHei",sans-serif}
+.ht-copy{padding:40px 6.5% 26px}
+.ht-kicker{font-size:9px;letter-spacing:.1em;line-height:1.4}
+.ht-section h2{color:inherit;font:600 clamp(24px,2.8vw,46px)/1.06 Arial,"Microsoft YaHei",sans-serif;letter-spacing:-.045em;max-width:620px;margin:16px 0 0}
+.ht-full,.ht-phone,.ht-post,.ht-motion-main,.ht-motion-sequence figure{margin:0}
+.ht-section img{display:block;width:100%;height:auto}
+.ht-social{position:relative;background:#739eff;color:#fff}
+.ht-social .ht-copy{padding:32px 6.5% 24px}
+.ht-social h2{font-size:clamp(24px,2.7vw,40px);text-wrap:balance}
+.ht-social .ht-kicker{font-size:clamp(7px,.7vw,10px)}
+.ht-motion{background:#101113;color:#f5f4ef}
+.ht-motion-grid{display:grid;grid-template-columns:2.8fr 1fr;gap:18px;padding:0 6.5% 36px;align-items:start}
+.ht-motion-main{position:sticky;top:20px}
+.ht-motion-sequence{display:grid;gap:16px}
+.ht-motion-sequence figcaption{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.1em;padding-bottom:6px}
+@media(max-width:700px){
+ .ht-copy{padding:28px 7% 22px}.ht-section h2{font-size:28px}
+ .ht-social .ht-copy{padding:24px 7% 20px}
+ .ht-social h2{font-size:26px;margin-top:12px}
+ .ht-social .ht-kicker{font-size:8px}
+ .ht-motion-grid{grid-template-columns:1fr;padding:0 7% 28px;gap:22px}
+ .ht-motion-main{position:static}.ht-motion-sequence{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+}
