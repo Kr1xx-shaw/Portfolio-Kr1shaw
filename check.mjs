@@ -8,7 +8,7 @@ globalThis.fetch=async()=>Response.json({keys:[jwk]});
 const enc=x=>Buffer.from(JSON.stringify(x)).toString('base64url');
 async function token(claims={}){const input=enc({alg:'RS256',kid:'test-key'})+'.'+enc({iss:env.CF_ACCESS_TEAM_DOMAIN,aud:[env.CF_ACCESS_AUD],email:env.ADMIN_EMAIL,exp:Math.floor(Date.now()/1000)+60,...claims});const sig=await crypto.subtle.sign('RSASSA-PKCS1-v1_5',keys.privateKey,new TextEncoder().encode(input));return input+'.'+Buffer.from(sig).toString('base64url')}
 const auth=await token();
-const forged=auth.slice(0,-1)+(auth.endsWith('A')?'B':'A');
+const chunks=auth.split('.');chunks[2]=(chunks[2][0]==='A'?'B':'A')+chunks[2].slice(1);const forged=chunks.join('.');
 assert.equal((await (await handle(new Request(origin+'/api/me',{headers:{'Cf-Access-Jwt-Assertion':forged}}),env,{})).json()).owner,false);
 const assetEnv={ASSETS:{fetch:async req=>new Response(new URL(req.url).pathname)}};
 assert.equal(await (await handle(new Request(origin+'/about'),assetEnv,{})).text(),'/index.html');
