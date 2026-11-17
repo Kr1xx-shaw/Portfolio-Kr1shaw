@@ -6,6 +6,9 @@ compatibility_date = "2026-11-16"
 directory = "./dist"
 binding = "ASSETS"
 run_worker_first = true
+# The Worker rewrites SPA routes to /index.html internally. Do not redirect
+# that asset back to /, which would send the browser into a redirect loop.
+html_handling = "none"
 
 [[r2_buckets]]
 binding = "BUCKET"

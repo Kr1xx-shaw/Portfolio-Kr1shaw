@@ -27,7 +27,7 @@ npm run build
 node check.mjs
 ```
 
-部署入口为 `dist/server/index.js`，运行于 Cloudflare Workers 兼容环境；持久上传功能需要 `BUCKET` R2 绑定以及现有托管平台提供的身份认证。
+独立 Cloudflare 部署入口为 `worker.mjs`，由 `wrangler.toml` 配置；静态文件直接取自 `dist/`。`dist/server/index.js` 是兼容旧打包流程的产物，不是独立部署入口。持久上传功能需要 `BUCKET` R2 绑定和 Cloudflare Access 管理员认证。
 
 此仓库是当前网站源码的同步副本；向 GitHub 提交代码不会自动更新现有线上网站。
 
@@ -41,5 +41,11 @@ node check.mjs
 2. 创建 R2 存储桶：`npx wrangler r2 bucket create krisshaw-portfolio`，或将 `wrangler.toml` 的 `bucket_name` 改为现有桶名。现有 Sites 中的项目和上传图片不会自动迁移，需要另行复制 `projects/` 与 `media/` 对象。
 3. 在 Cloudflare Zero Trust 创建 Self-hosted Access 应用，保护网站的 `/admin` 路径，允许管理员邮箱；在 `wrangler.toml` 填入 Access 团队域名（包含 `https://`）、应用 Audience 和管理员邮箱。管理员访问 `/admin` 完成登录；API 验证签名、签发方、受众、有效期和邮箱。缺少配置时管理员操作默认拒绝。
 4. `npx wrangler deploy` 发布。静态资源通过 Workers Assets 提供，`BUCKET` 用于 R2。部署后检查 `/api/health`、公开作品读取、管理员登录和上传。
+
+### 首页出现 ERR_TOO_MANY_REDIRECTS
+
+必须保留 `[assets]` 下的 `html_handling = "none"`。Worker 会将首页与前端路由内部改写到 `/index.html`；Cloudflare 默认的 HTML 规范化会把该地址重定向回 `/`，导致循环。关闭规范化后，内部改写直接返回页面，不需要修改 R2 或关闭管理员认证。
+
+修复后使用仓库根目录的 `wrangler.toml` 重新部署（`npx wrangler deploy`）。运行 `node check.mjs` 可检查配置及模拟 Assets 重定向行为；这不替代线上验收。部署完成后确认 `/`、`/work`、`/about` 返回页面且没有循环跳转。
 
 需要实际 Cloudflare 账户配置和 R2 数据迁移才能验证线上登录与上传。仓库推送不会自动部署。

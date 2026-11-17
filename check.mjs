@@ -1,4 +1,22 @@
 import assert from 'node:assert/strict';import {handle} from './worker.mjs';
+import {readFileSync} from 'node:fs';
+const config=readFileSync(new URL('./wrangler.toml',import.meta.url),'utf8');
+const assetsConfig=config.match(/^\[assets\]\s*\n([\s\S]*?)(?=^\[|$(?![\s\S]))/m)?.[1]||'';
+const exactHtml=/^html_handling\s*=\s*"none"\s*$/m.test(assetsConfig);
+// Model Assets' canonical redirect: default /index.html -> / causes the
+// Worker's internal rewrite to return a redirect to the same public URL.
+const cloudflareAssets={ASSETS:{fetch:async req=>{
+ const url=new URL(req.url);
+ if(url.pathname==='/index.html'&&!exactHtml)return Response.redirect(new URL('/',url),307);
+ return new Response(req.method==='HEAD'?null:'<!doctype html>',{headers:{'Content-Type':'text/html'}});
+}}};
+for(const path of ['/','/?preview=1','/index.html','/work','/about','/admin','/project/stockopoly']){
+ for(const method of ['GET','HEAD']){
+  const response=await handle(new Request('https://example.test'+path,{method}),cloudflareAssets,{});
+  assert.equal(response.status,200,`${method} ${path} must not redirect`);
+  assert.equal(response.headers.get('location'),null);
+ }
+}
 const objects=new Map();const bucket={async list(){return {objects:[...objects.keys()].filter(k=>k.startsWith('projects/')).map(key=>({key})),truncated:false}},async put(k,v,o){objects.set(k,{v,o})},async get(k){const x=objects.get(k);return x?{text:async()=>x.v,body:x.v,httpMetadata:x.o?.httpMetadata}:null},async delete(k){objects.delete(k)}};
 const origin='https://example.test';
 const env={BUCKET:bucket,CF_ACCESS_TEAM_DOMAIN:'https://example.cloudflareaccess.com',CF_ACCESS_AUD:'test-audience',ADMIN_EMAIL:'owner@example.com'};
