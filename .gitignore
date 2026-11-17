@@ -2,3 +2,10 @@ node_modules/
 .sites-runtime/
 .sites-checkout*/
 *.log
+
+# Generated output; Cloudflare deploys worker.mjs and the authored static files.
+/dist/server/
+/.wrangler/
+/.cache/
+/coverage/
+/tmp/

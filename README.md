@@ -14,7 +14,8 @@
 - `dist/portfolio-shell.css`：各页面共用的导航和全屏字体比例。
 - `dist/projects.js`：作品数据及项目内容。
 - `worker.mjs`：网站路由与项目上传接口。
-- `build.mjs`：打包页面和素材，生成 `dist/server/index.js`。
+- `build.mjs`：检查独立 Cloudflare 的入口、静态资源绑定和页面依赖，不生成内嵌素材的大文件。
+- `build-legacy.mjs`：仅供手动生成旧版 Sites 兼容包。
 - `check.mjs`：上传权限和文件类型检查。
 - `.openai/hosting.json`：现有 Sites 项目的托管信息。
 
@@ -25,11 +26,20 @@
 ```sh
 npm run build
 node check.mjs
+node check-pointer.mjs
 ```
 
 独立 Cloudflare 部署入口为 `worker.mjs`，由 `wrangler.toml` 配置；静态文件直接取自 `dist/`。`dist/server/index.js` 是兼容旧打包流程的产物，不是独立部署入口。持久上传功能需要 `BUCKET` R2 绑定和 Cloudflare Access 管理员认证。
 
 此仓库是当前网站源码的同步副本；向 GitHub 提交代码不会自动更新现有线上网站。
+
+## 生成文件与 Codex 读取范围
+
+`dist/server/index.js` 是约 15.8 MB 的旧版生成包，独立 Cloudflare Workers 部署不需要它。该文件已停止 Git 跟踪；`.gitignore` 排除 `dist/server/`，`dist/.assetsignore` 也阻止它被作为静态资源上传。默认构建不会生成它。
+
+需要旧版 Sites 包时，手动运行 `npm run build:legacy`（或 `node build-legacy.mjs`）即可重新生成；该输出不应提交到 Git。`.openai/hosting.json` 仅保留作旧版托管配置，独立 Cloudflare 部署使用 `wrangler.toml`。
+
+`AGENTS.md` 要求 Codex 避免读取生成包、媒体二进制和第三方大包；`.rgignore` 将它们排除在默认搜索之外。这些规则减少无关上下文，不是强制文件访问隔离。`dist/` 下手写的网页代码和静态素材仍保留在 Git 中，不能将整个目录当作构建产物排除。
 
 ## 素材说明
 

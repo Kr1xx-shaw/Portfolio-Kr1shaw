@@ -1,1 +1,1 @@
-{"name":"xichen-portfolio","private":true,"type":"module","scripts":{"build":"node build.mjs"}}
+{"name":"xichen-portfolio","private":true,"type":"module","scripts":{"build":"node build.mjs","build:legacy":"node build-legacy.mjs","test":"node check.mjs && node check-pointer.mjs"}}

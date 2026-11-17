@@ -1,0 +1,22 @@
+# Keep default searches focused on source. Deployment assets remain tracked.
+/dist/server/
+/.wrangler/
+/.cache/
+/coverage/
+/tmp/
+*.map
+*.webp
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.glb
+*.ttf
+*.woff
+*.woff2
+*.zip
+*.tar.gz
+/dist/assets/three.core.js
+/dist/assets/three.module.js
+/dist/assets/GLTFLoader.js

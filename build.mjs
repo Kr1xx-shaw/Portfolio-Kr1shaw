@@ -1,10 +1,32 @@
-import crypto from 'node:crypto';import fs from 'node:fs';import path from 'node:path';
-const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.ttf':'font/ttf','.woff':'font/woff','.glb':'model/gltf-binary','.txt':'text/plain; charset=utf-8'};
-const stockRecord=JSON.parse(fs.readFileSync('dist/projects.js','utf8').split('\n').find(l=>l.includes('"id":"stockopoly"')).trim().replace(/,$/,''));
-const stockUsed=new Set([stockRecord.cover,...stockRecord.caseSections.flatMap(s=>(s.images||[]).map(m=>m.file)),...stockRecord.gallery.map(g=>g[0])].flatMap(n=>[n+'.webp',n+'-thumb.webp']));
-const retiredAssets=new Set(['wass-label-onions-final.webp','wass-label-onions-final-thumb.webp','wass-label-peas-final.webp','wass-label-peas-final-thumb.webp','wass-illustrations-final.webp','wass-illustrations-final-thumb.webp']);
-const names=['index.html','gallery.css','intro.css','portfolio-pages.css','about-tools.css','portfolio-shell.css','project-page.css','gallery.js','projects.js','resume-fragment.html',...fs.readdirSync('dist/assets').filter(n=>!['home-paper-texture-web.webp','about-paper-texture-web.webp','home-paper-texture.png','about-paper-texture.png','icon-lit-codex.webp','icon-lit-ai.webp','icon-lit-figma.webp','icon-lit-ps.webp','icon-lit-gaming.webp','icons-lit-tools.webp','icons-lit-interests.webp','studio.webp','Chinese-Regular.woff2','software-icons-transparent.png','about-tools-avatar.png','about-intro-avatar.png','canon-eos-rp.glb','three.core.js','three.module.js','GLTFLoader.js','software-icons.webp','interest-icons.webp','studio-mono.webp','wass-fresh.webp','wass-ui.webp','wass-packaging.webp','interception.webp','interception-family.webp','interception-salad.webp','stockopoly.webp','stockopoly-interface.webp','stockopoly-flow.webp','seahi.webp','seahi-system.webp','seahi-character.webp','greenhouse.webp','greenhouse-development.webp','greenhouse-spaces.webp'].includes(n)).map(n=>'assets/'+n)];
-const assets=Object.fromEntries(names.filter(n=>(!n.startsWith('assets/st-')||stockUsed.has(path.basename(n)))&&!retiredAssets.has(path.basename(n))).map(n=>['/'+n,{data:fs.readFileSync('dist/'+n).toString('base64'),etag:'"'+crypto.createHash('sha256').update(fs.readFileSync('dist/'+n)).digest('hex').slice(0,24)+'"',type:types[path.extname(n)]||'application/octet-stream'}]));
-fs.mkdirSync('dist/server',{recursive:true});fs.writeFileSync('dist/server/index.js',fs.readFileSync('worker.mjs','utf8').replace(/\nexport default \{fetch:\(request,env,ctx\)=>handle\(request,env,\{\},ctx\)\};\s*$/, '')+'\nconst assets='+JSON.stringify(assets)+';\nexport default {fetch:(request,env,ctx)=>handle(request,env,assets,ctx)};');
-console.log('Packaged',names.length,'assets and persistent project upload routes.');
+// Cloudflare uploads these files directly. Do not inline assets into a Worker.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 
+const root=path.dirname(fileURLToPath(import.meta.url));
+const read=name=>fs.readFileSync(path.join(root,name),'utf8');
+const config=read('wrangler.toml');
+assert.match(config,/^main\s*=\s*"worker\.mjs"\s*$/m,'Cloudflare must deploy worker.mjs');
+const assets=config.match(/^\[assets\]\s*\n([\s\S]*?)(?=^\[|$(?![\s\S]))/m)?.[1]||'';
+assert.match(assets,/^directory\s*=\s*"\.\/dist"\s*$/m);
+assert.match(assets,/^binding\s*=\s*"ASSETS"\s*$/m);
+assert.match(assets,/^html_handling\s*=\s*"none"\s*$/m);
+assert.match(read('dist/.assetsignore'),/^\/?server\/\s*$/m,'Legacy bundle must not be uploaded as an asset');
+execFileSync(process.execPath,['--check',path.join(root,'worker.mjs')],{stdio:'inherit'});
+
+// Verify page entry dependencies without opening images, fonts or bundles.
+const html=read('dist/index.html');
+for(const match of html.matchAll(/(?:src|href)="(\/[^"?#]+)(?:[?#][^"]*)?"/g)){
+ const name=path.resolve(root,'dist','.'+match[1]);
+ assert.ok(name.startsWith(path.join(root,'dist')+path.sep),'Asset must stay inside dist');
+ assert.ok(fs.statSync(name).isFile(),`Missing page asset: ${match[1]}`);
+}
+function countAssets(directory){
+ return fs.readdirSync(directory,{withFileTypes:true}).reduce((count,entry)=>{
+  if(entry.name==='server'||entry.name.startsWith('.'))return count;
+  return count+(entry.isDirectory()?countAssets(path.join(directory,entry.name)):entry.isFile()?1:0);
+ },0);
+}
+console.log(`Cloudflare build verified: worker.mjs + ${countAssets(path.join(root,'dist'))} static files; no generated server bundle needed.`);
