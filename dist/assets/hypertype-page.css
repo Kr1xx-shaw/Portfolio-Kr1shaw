@@ -1,11 +1,13 @@
 /* Original image-only gallery, with the added Instagram and speaker mockups. */
-.ht-section{background:transparent;margin-bottom:8.8dvh}
+.hypertype-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px}
+.ht-section{background:transparent;margin-bottom:5dvh}
 .ht-full,.ht-motion-main,.ht-motion-sequence figure{margin:0}
 .ht-section img{display:block;width:100%;height:auto}
 .ht-motion-grid{display:grid;grid-template-columns:2.8fr 1fr;gap:18px;align-items:start}
 .ht-motion-sequence{display:grid;gap:16px}
 @media(max-width:700px){
- .ht-section{margin-bottom:32px}
+ .hypertype-case .case-gallery{width:auto;margin:0 7%;padding-top:0}
+ .ht-section{margin-bottom:20px}
  .ht-motion-grid{grid-template-columns:1fr;gap:16px}
  .ht-motion-sequence{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 }
