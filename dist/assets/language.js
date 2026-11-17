@@ -1,15 +1,15 @@
 (()=>{
  'use strict';
  const pairs=[
-["01 / THE VISUAL IDENTITY","01 / 视觉识别"],
+["THE VISUAL IDENTITY","01 / 视觉识别"],
 ["A language built from letterforms.","以字形构建视觉语言。"],
-["02 / INTO THE CITY","02 / 走进城市"],
+["INTO THE CITY","02 / 走进城市"],
 ["Made to be seen.","让设计被看见。"],
-["03 / THE SYSTEM IN MOTION","03 / 跨屏幕视觉系统"],
+["THE SYSTEM IN MOTION","03 / 跨屏幕视觉系统"],
 ["One language. Multiple screens.","同一种语言，连接多个屏幕。"],
-["04 / THE DIGITAL EXTENSION","04 / 数字延伸"],
+["THE DIGITAL EXTENSION","04 / 数字延伸"],
 ["From print to interaction.","从印刷走向交互。"],
-["05 / THE IDENTITY KEEPS MOVING","05 / 持续变化的识别"],
+["THE IDENTITY KEEPS MOVING","05 / 持续变化的识别"],
 ["One identity. Changing voices.","统一的识别，不同的声音。"],
  ['WORK','作品'],['ABOUT','关于'],['CONTACT','联系'],['Menu','菜单'],['Visual / Multimedia','视觉 / 多媒体'],['Beijing / London / Hong Kong','北京 / 伦敦 / 香港'],['For inquiries','项目咨询'],['Portfolio navigation','作品集导航'],['Selected work','精选作品'],['Project','项目'],['Role','职责'],['Context','背景'],['Focus','领域'],['Scroll','滚动浏览'],['View project ↗','查看项目 ↗'],['Back to work →','返回作品页 →'],['Manage','管理'],['About','关于'],['Concept','概念'],['Scope','范围'],['Deliverables','设计内容'],['Education','教育背景'],['Experience','实习经历'],['Capabilities','专业能力'],['Hobbies','个人兴趣'],['Current studies','在读'],['AND','与'],['SKILLS & TOOLS','技能与工具'],['MORE ABOUT ME','更多关于我'],['CLICK TO KNOW MORE','点击了解更多'],['ABOUT ME','关于我'],['CLICK AGAIN','再次点击'],['× CLOSE','× 关闭'],
  ['Visual Identity & Branding','视觉识别与品牌设计'],['Typography & Editorial Design','字体与编辑设计'],['Packaging & Character Design','包装与角色设计'],['UI & Interactive Experiences','界面与交互体验'],['Motion & AI Filmmaking','动态视觉与 AI 影像制作'],['3D Spatial Narratives','三维空间叙事'],['Finance & Trading','金融与交易'],['Coding & Programming','编程与开发'],['Photography & Editing','摄影与剪辑'],['Electronic Games','电子游戏'],['AI Video & Director','AI 影像与导演'],['Sports','体育运动'],['Filmmaking','影像创作'],['Art & Design','艺术与设计'],['Economics & Markets','经济与市场'],['Gaming','游戏'],['Travel','旅行'],['Creative Coding','创意编程'],['Basketball','篮球'],['Trading & Finance','交易与金融'],['CapCut','剪映'],

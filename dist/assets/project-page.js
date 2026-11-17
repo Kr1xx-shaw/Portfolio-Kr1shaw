@@ -1,7 +1,7 @@
 import {stockopolySection} from '/assets/stockopoly-sections.js?v=37-stock-layout';
 import {portfolioShell} from '/assets/portfolio-shell.js?v=13-shared-shell';
 import {interceptionSection} from '/assets/interception-sections.js?v=28-interception';
-import {hypertypeSection} from '/assets/hypertype-sections.js?v=45-hypertype';
+import {hypertypeSection} from '/assets/hypertype-sections.js?v=46-hypertype';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const asset=s=>s.startsWith('/media/')?s:'/assets/'+s+'.webp'+(s.startsWith('st-')?'?v=37-stock-layout':'');
 const sectionMarkup=(s,i)=>{
