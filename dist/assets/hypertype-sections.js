@@ -1,8 +1,6 @@
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const image=(name,alt,extra='')=>`<img src="/assets/${esc(name)}.webp" alt="${esc(alt)}" loading="lazy" decoding="async" ${extra}>`;
 export function hypertypeSection(s,i){
- const plain=['ht-poster','ht-billboard'].includes(s.type);
- const copy=plain?'':`<div class="ht-copy"><span class="ht-kicker">${esc(s.label.replace(/^\d+\s*\/\s*/,''))}</span><h2>${esc(s.title)}</h2></div>`;
  let art;
  if(s.type==='ht-social'){
   art=`<figure class="ht-full">${image('ht-social-original','HYPERTYPE Instagram profile and speaker posts — original mockup','width="2600" height="1733"')}</figure>`;
@@ -11,5 +9,5 @@ export function hypertypeSection(s,i){
  }else{
   art=`<figure class="ht-full">${image(s.images[0].file,s.images[0].alt,'width="1800" height="1350"')}</figure>`;
  }
- return `<section class="case-figure wass-section ht-section ${s.type}${plain?' ht-plain':''}" id="case-image-${i+1}">${copy}${art}</section>`;
+ return `<section class="case-figure wass-section ht-section ${s.type}" id="case-image-${i+1}">${art}</section>`;
 }
