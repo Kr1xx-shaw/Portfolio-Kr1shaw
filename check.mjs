@@ -1,8 +1,24 @@
 import assert from 'node:assert/strict';import {handle} from './worker.mjs';
 const objects=new Map();const bucket={async list(){return {objects:[...objects.keys()].filter(k=>k.startsWith('projects/')).map(key=>({key})),truncated:false}},async put(k,v,o){objects.set(k,{v,o})},async get(k){const x=objects.get(k);return x?{text:async()=>x.v,body:x.v,httpMetadata:x.o?.httpMetadata}:null},async delete(k){objects.delete(k)}};
-const env={BUCKET:bucket};const origin='https://example.test';
+const origin='https://example.test';
+const env={BUCKET:bucket,CF_ACCESS_TEAM_DOMAIN:'https://example.cloudflareaccess.com',CF_ACCESS_AUD:'test-audience',ADMIN_EMAIL:'owner@example.com'};
+const keys=await crypto.subtle.generateKey({name:'RSASSA-PKCS1-v1_5',modulusLength:2048,publicExponent:new Uint8Array([1,0,1]),hash:'SHA-256'},true,['sign','verify']);
+const jwk=await crypto.subtle.exportKey('jwk',keys.publicKey);jwk.kid='test-key';
+globalThis.fetch=async()=>Response.json({keys:[jwk]});
+const enc=x=>Buffer.from(JSON.stringify(x)).toString('base64url');
+async function token(claims={}){const input=enc({alg:'RS256',kid:'test-key'})+'.'+enc({iss:env.CF_ACCESS_TEAM_DOMAIN,aud:[env.CF_ACCESS_AUD],email:env.ADMIN_EMAIL,exp:Math.floor(Date.now()/1000)+60,...claims});const sig=await crypto.subtle.sign('RSASSA-PKCS1-v1_5',keys.privateKey,new TextEncoder().encode(input));return input+'.'+Buffer.from(sig).toString('base64url')}
+const auth=await token();
+const forged=auth.slice(0,-1)+(auth.endsWith('A')?'B':'A');
+assert.equal((await (await handle(new Request(origin+'/api/me',{headers:{'Cf-Access-Jwt-Assertion':forged}}),env,{})).json()).owner,false);
+const assetEnv={ASSETS:{fetch:async req=>new Response(new URL(req.url).pathname)}};
+assert.equal(await (await handle(new Request(origin+'/about'),assetEnv,{})).text(),'/index.html');
+assert.equal(await (await handle(new Request(origin+'/assets/test.webp'),assetEnv,{})).text(),'/assets/test.webp');
+assert.equal((await (await handle(new Request(origin+'/api/me',{headers:{'oai-authenticated-user-email':env.ADMIN_EMAIL}}),env,{})).json()).owner,false);
+assert.equal((await (await handle(new Request(origin+'/api/me',{headers:{cookie:'CF_Authorization='+auth}}),env,{})).json()).owner,true);
+for(const claims of [{aud:['wrong']},{exp:1},{email:'other@example.com'}])assert.equal((await (await handle(new Request(origin+'/api/me',{headers:{'Cf-Access-Jwt-Assertion':await token(claims)}}),env,{})).json()).owner,false);
+assert.equal((await handle(new Request(origin+'/media/missing'),{},{})).status,503);
 assert.equal((await handle(new Request(origin+'/api/projects',{method:'POST'}),env,{})).status,403);
 let f=new FormData();for(const [k,v] of Object.entries({title:'test',tags:'TEST',summary:'test summary',description:'test detail'}))f.set(k,v);f.append('images',new Blob([new Uint8Array([137,80,78,71,13,10,26,10])],{type:'image/png'}),'test.png');
-let req=new Request(origin+'/api/projects',{method:'POST',headers:{origin,'oai-authenticated-user-email':'qianzhihua7777@126.com'},body:f});let res=await handle(req,env,{});assert.equal(res.status,201);const p=await res.json();assert.equal(p.title,'test');assert.equal((await (await handle(new Request(origin+'/api/projects'),env,{})).json()).length,1);assert.equal((await handle(new Request(origin+p.cover),env,{})).status,200);
-f.set('images',new Blob(['<svg>unsafe</svg>'],{type:'image/svg+xml'}),'bad.svg');res=await handle(new Request(origin+'/api/projects',{method:'POST',headers:{origin,'oai-authenticated-user-email':'qianzhihua7777@126.com'},body:f}),env,{});assert.equal(res.status,400);
+let req=new Request(origin+'/api/projects',{method:'POST',headers:{origin,cookie:'CF_Authorization='+auth},body:f});let res=await handle(req,env,{});assert.equal(res.status,201);const p=await res.json();assert.equal(p.title,'test');assert.equal((await (await handle(new Request(origin+'/api/projects'),env,{})).json()).length,1);assert.equal((await handle(new Request(origin+p.cover),env,{})).status,200);
+f.set('images',new Blob(['<svg>unsafe</svg>'],{type:'image/svg+xml'}),'bad.svg');res=await handle(new Request(origin+'/api/projects',{method:'POST',headers:{origin,cookie:'CF_Authorization='+auth},body:f}),env,{});assert.equal(res.status,400);
 console.log('PASS: owner authorization, persistent upload/list/read, unsupported file rejection.');

@@ -1,0 +1,18 @@
+name = "krisshaw-portfolio"
+main = "worker.mjs"
+compatibility_date = "2026-11-16"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = true
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "krisshaw-portfolio"
+
+[vars]
+# Replace these with your Cloudflare Access application values.
+CF_ACCESS_TEAM_DOMAIN = ""
+CF_ACCESS_AUD = ""
+ADMIN_EMAIL = ""

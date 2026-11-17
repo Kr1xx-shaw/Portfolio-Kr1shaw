@@ -34,3 +34,12 @@ node check.mjs
 ## 素材说明
 
 作品图片、人物素材和字体均保留在仓库内。第三方素材与代码来源见 `dist/assets/CREDITS.txt` 及素材目录中的许可文件。仓库公开不代表作品和素材可自由转载或商用。
+
+## 独立 Cloudflare Workers 部署
+
+1. 安装 Wrangler 并登录 Cloudflare：`npx wrangler login`。
+2. 创建 R2 存储桶：`npx wrangler r2 bucket create krisshaw-portfolio`，或将 `wrangler.toml` 的 `bucket_name` 改为现有桶名。现有 Sites 中的项目和上传图片不会自动迁移，需要另行复制 `projects/` 与 `media/` 对象。
+3. 在 Cloudflare Zero Trust 创建 Self-hosted Access 应用，保护网站的 `/admin` 路径，允许管理员邮箱；在 `wrangler.toml` 填入 Access 团队域名（包含 `https://`）、应用 Audience 和管理员邮箱。管理员访问 `/admin` 完成登录；API 验证签名、签发方、受众、有效期和邮箱。缺少配置时管理员操作默认拒绝。
+4. `npx wrangler deploy` 发布。静态资源通过 Workers Assets 提供，`BUCKET` 用于 R2。部署后检查 `/api/health`、公开作品读取、管理员登录和上传。
+
+需要实际 Cloudflare 账户配置和 R2 数据迁移才能验证线上登录与上传。仓库推送不会自动部署。
