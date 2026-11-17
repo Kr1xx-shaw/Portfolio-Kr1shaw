@@ -9,6 +9,8 @@
 .ht-social{position:relative;background:transparent;color:#fff}
 .ht-social .ht-copy{position:absolute;z-index:1;top:1%;left:var(--ht-inset);width:36%;padding:0}
 .ht-social .ht-kicker{display:block;line-height:1.4}.ht-social h2{margin:3px 0 0;text-wrap:balance}
+.ht-web{position:relative}
+.ht-web .ht-copy{position:absolute;inset:0 0 auto;z-index:1}
 .ht-motion{background:transparent;color:#202123}
 .ht-motion-grid{display:grid;grid-template-columns:2.8fr 1fr;gap:18px;padding:0 0 36px;align-items:start}
 .ht-motion-main{position:sticky;top:20px}
