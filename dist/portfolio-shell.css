@@ -1,0 +1,37 @@
+html{scrollbar-gutter:stable}
+html:has(body.portfolio-mode){background:#ededed}
+/* Work is the source of truth: this layer never inherits an artboard transform. */
+.site-chrome{position:absolute;inset:0;height:100dvh;z-index:8;pointer-events:none;color:#151515;font:12px B,Arial,sans-serif}
+.site-chrome a{pointer-events:auto}
+.site-brand{position:absolute;left:1.1%;top:1.8%;writing-mode:vertical-rl;transform:rotate(180deg);font-size:26px;line-height:1;font-weight:bold;letter-spacing:-.06em}
+.site-copyright{position:absolute;left:3.2%;top:2%;writing-mode:vertical-rl;font-size:9px;font-weight:400;line-height:normal}
+.site-menu-label{position:absolute;left:13.2%;top:2%;color:#777}
+.site-chrome .site-nav{position:absolute;display:flex;flex-direction:column;align-items:start;justify-content:center;left:13.2%;top:7%;gap:0;overflow:visible;flex:initial;order:initial}
+.site-chrome .site-nav a{font:700 clamp(16.15px,1.52vw,27.55px)/.96 PortfolioSerif,Georgia,serif;color:#151515;padding:0;border:0;letter-spacing:-.07em}
+.site-chrome .site-nav a:hover{color:#002fa7;border:0}
+.site-meta{position:absolute;inset:0;pointer-events:none;transition:filter .35s,opacity .35s}
+.site-location{position:absolute;left:50%;top:2%;line-height:1.2}
+.site-email{position:absolute;right:1%;top:2%;font-size:11px}
+.site-chrome a:focus-visible{outline:1px solid #002fa7}
+.about-stage.is-preview .site-meta{filter:blur(5.6px);opacity:.48}
+@media(max-width:700px){
+ .site-brand{left:1.1%;top:1.8%;font-size:18px}
+ .site-copyright{left:6%;top:2%;font-size:8px}
+ .site-menu-label{left:13%;font-size:10px}
+ .site-chrome .site-nav{left:13%;top:7%}
+ .site-chrome .site-nav a{font-size:16.15px}
+ .site-location{left:auto;right:4%;font-size:9px}
+ .site-email{top:auto;bottom:2%;right:3%;font-size:9px}
+ .about-stage.is-preview .site-meta{filter:blur(3px)}
+}
+@media(prefers-reduced-motion:reduce){.site-meta{transition:none}}
+
+/* One shared large-screen type scale for Work, About and project pages. */
+@media(min-width:1920px){
+ .site-chrome{font-size:.625vw}
+ .site-brand{font-size:1.354167vw}
+ .site-copyright{font-size:.46875vw}
+ .site-chrome .site-nav a{font-size:1.434896vw}
+ .site-email{font-size:.572917vw}
+ body.portfolio-mode .language-toggle{font-size:.625vw;gap:.416667vw;padding:.364583vw .520833vw}
+}

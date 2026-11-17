@@ -1,0 +1,70 @@
+.case-page{position:relative;min-height:100dvh;background:#ededed;color:#151515;font:11px/1.2 B,Arial,sans-serif}
+.case-page .site-chrome{position:fixed}
+.case-info{position:fixed;left:1.1%;top:32%;width:23%;max-height:62dvh;overflow:auto;scrollbar-width:thin;z-index:3}
+.case-info h1{font:700 clamp(15px,1.45vw,24px)/1.05 PortfolioSerif,Georgia,serif;letter-spacing:-.055em;margin:0 0 35px 26.5%;overflow-wrap:anywhere}
+.case-info dl{margin:0}.case-info dl>div{display:grid;grid-template-columns:26.5% 73.5%;margin-bottom:34px}
+.case-info dt{color:#777}.case-info dd{margin:0;font-weight:700}.case-info p{margin:0 0 10px}.case-info p:last-child{margin:0}
+.case-back{display:inline-block;margin:0 0 14px 26.5%;font-size:16px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.case-gallery{width:44.6%;margin-left:27.3%;padding-top:max(54px,4.8dvh);padding-bottom:8dvh}
+.case-figure{margin:0 0 8.8dvh;scroll-margin-top:54px}.case-figure img{display:block;width:100%;height:auto;background:transparent}
+.case-gallery-back{display:block;font-size:12px;text-align:center;text-decoration:underline;text-underline-offset:3px;margin:4dvh 0}
+.case-thumbnails{position:fixed;left:auto;right:2.4%;top:50%;transform:translateY(-50%);width:clamp(36px,3.25vw,62px);max-height:66dvh;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:5px;overflow:auto;padding:4px;z-index:10;flex:initial;scrollbar-width:none}
+.case-thumbnails button{display:block;flex:none;width:100%;padding:0;opacity:.55;transition:opacity .2s;outline-offset:2px}
+.case-thumbnails img{display:block;width:100%;height:auto}.case-thumbnails button:hover,.case-thumbnails .is-active{opacity:1}.case-thumbnails .is-active{outline:1px solid #151515}
+.case-thumbnails button:focus-visible,.case-page a:focus-visible{outline:1px solid #002fa7}
+.case-scroll{position:fixed;left:1.1%;bottom:2%;font-size:11px;color:#777;pointer-events:none}
+.case-empty{padding-top:28dvh;color:#777;font-size:12px;margin:0;min-height:70dvh}
+@media(max-width:700px){
+ .case-page{padding-bottom:65px}.case-info{position:relative;left:auto;top:auto;width:auto;max-height:none;margin:0 7% 45px 13%;padding-top:180px;overflow:visible;font-size:11px}
+ .case-info h1{margin:0 0 26px;font-size:24px}.case-info dl>div{grid-template-columns:20% 80%;margin-bottom:24px}.case-back{margin-left:20%;font-size:13px}
+ .case-gallery{width:auto;margin:0 7%;padding-top:0;padding-bottom:55px}.case-figure{margin-bottom:32px}
+ .case-thumbnails{left:7%;right:7%;bottom:44px;top:auto;transform:none;width:auto;max-height:58px;flex-direction:row;justify-content:center;gap:8px;padding:5px 8px;background:#edededee}
+ .case-thumbnails button{width:42px}.case-scroll{display:none}.case-empty{padding-top:20px;min-height:30dvh}
+}
+@media(prefers-reduced-motion:reduce){.case-thumbnails button{transition:none}}
+
+/* WASS Fresh: a sectioned brand and packaging document. */
+.wass-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px}
+.wass-section{margin-bottom:0;background:#f6f6f0;overflow:hidden}
+.wass-section-copy{padding:clamp(24px,3vw,55px) 6.5% 24px}
+.wass-kicker{font:400 10px/1.3 AboutSans,Arial,sans-serif;letter-spacing:.13em;color:#5b7163}
+.wass-section h2{font:700 clamp(24px,3vw,48px)/1.07 PortfolioSerif,Georgia,serif;letter-spacing:-.06em;margin:16px 0 22px;color:#224834}
+.wass-section-copy>p{max-width:540px;font:400 13px/1.9 AboutSans,Arial,sans-serif;margin:0 0 12px;color:#3e5146}
+.wass-image-grid{display:grid;grid-template-columns:1fr;gap:0}
+.wass-photo{margin:0;min-width:0}.wass-photo img{display:block;width:100%;height:auto}
+.wass-hero{background:#c9d4be}.wass-hero .wass-section-copy{padding-top:35px;padding-bottom:8px}
+.wass-hero .wass-kicker{font:700 clamp(36px,5vw,80px)/1 D,Arial,sans-serif;letter-spacing:-.045em;color:#20492f}
+.wass-hero h2{font:400 14px/1.3 AboutSans,Arial,sans-serif;letter-spacing:.04em;margin:8px 0 16px}
+.wass-intro{background:#e9efdf}.wass-intro .wass-section-copy{padding-bottom:45px}
+.wass-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 0;font:11px/1.5 AboutSans,Arial,sans-serif}.wass-facts dt{color:#718075;margin-bottom:8px}.wass-facts dd{margin:0}
+.wass-system .wass-image-grid{padding:0 6.5% 36px;background:transparent}.wass-system .wass-photo img{clip-path:polygon(0 0,100% 0,100% 66.6667%,83.3333% 66.6667%,83.3333% 100%,0 100%)}
+.wass-labels{background:#eef1e6}.wass-labels .wass-image-grid{grid-template-columns:1fr 1fr;gap:14px;padding:0 6.5% 40px}
+.wass-packaging .wass-image-grid{grid-template-columns:1fr 1fr;gap:14px;padding:0 6.5% 40px}.wass-packaging .wass-photo img{aspect-ratio:2200/1558;object-fit:contain}
+.wass-app{background:#e5eae2}.wass-app .wass-image-grid{gap:20px;padding:0 6.5% 40px}
+@media(max-width:700px){.wass-case .case-gallery{width:auto;margin:0 7%;padding-top:0}.wass-section-copy{padding:28px 7% 18px}.wass-section h2{font-size:28px}.wass-section-copy>p{font-size:12px}.wass-labels .wass-image-grid,.wass-packaging .wass-image-grid{gap:8px}.wass-facts{grid-template-columns:1fr}.wass-kicker{font-size:9px}}
+
+.wass-hero .wass-section-copy{display:none}
+
+/* INTERCEPTION uses neutral sans-serif typography throughout its project content. */
+@font-face{font-family:InterceptionSans;src:url('/assets/Inter-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:InterceptionSans;src:url('/assets/Inter-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+.case-page:has(.ic-section) .case-info{font-family:InterceptionSans,Arial,sans-serif}
+.case-page:has(.ic-section) .case-info h1{font-family:InterceptionSans,Arial,sans-serif;letter-spacing:-.035em}
+.ic-section{position:relative;background:#f7f4e9;color:#191919;font-family:InterceptionSans,Arial,sans-serif}
+.ic-copy{padding:44px 6.5% 24px}
+.ic-kicker,.ic-micro{display:block;font-size:9px;line-height:1.5;letter-spacing:.12em;color:#596744}
+.ic-section h2{font:700 clamp(23px,2.55vw,40px)/1.12 InterceptionSans,Arial,sans-serif;color:#191919;letter-spacing:-.045em;margin:16px 0 20px}
+.ic-copy>p{font:400 13px/1.7 InterceptionSans,Arial,sans-serif;max-width:550px;margin:0 0 10px;color:#333}
+.ic-art{margin:0 6.5% 28px}.ic-art img{display:block;width:100%;height:auto}
+.ic-hero .ic-art{margin:0}.ic-hero .ic-copy{position:absolute;top:0;left:0;right:0;padding:24px 4%;z-index:1}
+.ic-hero .ic-kicker{font-size:clamp(25px,3.4vw,54px);font-weight:700;letter-spacing:-.055em;line-height:1;color:#191919}
+.ic-hero h2{font-size:clamp(12px,1.2vw,18px);margin:8px 0 0;font-weight:400;letter-spacing:0;color:#425b32}
+.ic-facts{display:flex;gap:28px;font-size:10px;line-height:1.6;margin:24px 0 28px}.ic-facts>div{display:flex;gap:10px}.ic-facts dt{font-weight:700;color:#596744}.ic-facts dd{margin:0}
+.ic-journey{display:flex;justify-content:space-between;gap:12px;list-style:none;border-block:1px solid #bcb6a7;margin:0;padding:21px 0;font-size:12px;font-weight:700}
+.ic-journey li{display:flex;align-items:center;gap:15px}.ic-journey li:not(:last-child):after{content:'→';font-size:17px;font-weight:400;color:#898170}
+.ic-characters .ic-art img,.ic-social .ic-art img{mix-blend-mode:multiply}
+.ic-palette{margin:20px 6.5% 0;display:grid;grid-template-columns:1fr 1.6fr;gap:24px;border-block:1px solid #cfc7b8;padding:20px 0}
+.ic-palette>div:last-child{border-left:1px solid #cfc7b8;padding-left:24px}.ic-swatches{display:flex;gap:10px;margin-top:14px}.ic-swatches i{display:block;width:25px;height:25px;border-radius:50%;background:var(--swatch)}
+.ic-palette strong{display:inline-block;font-size:24px;letter-spacing:-.04em;margin-top:12px}.ic-alphabet{display:inline-block;vertical-align:middle;margin-left:16px;font-size:6px;letter-spacing:.12em;line-height:2}
+.ic-posters .ic-art{margin:10px 0 28px}.ic-packaging .ic-art{margin-bottom:0}.ic-social{padding-bottom:32px}.ic-social .ic-art{max-width:540px;margin-inline:auto}
+@media(max-width:700px){.ic-copy{padding:30px 7% 20px}.ic-hero .ic-copy{padding:16px 4%}.ic-hero .ic-kicker{font-size:clamp(23px,6vw,40px)}.ic-hero h2{font-size:11px;margin-top:5px}.ic-copy>p{font-size:12px}.ic-facts{display:block}.ic-facts>div{margin-top:8px}.ic-journey{gap:5px;font-size:9px;padding:16px 0}.ic-journey li{gap:4px}.ic-journey li:not(:last-child):after{font-size:12px}.ic-palette{gap:12px;grid-template-columns:1fr 1fr}.ic-palette>div:last-child{padding-left:12px}.ic-alphabet{display:none}.ic-palette strong{font-size:21px}.ic-swatches{gap:6px}.ic-swatches i{width:20px;height:20px}.ic-social .ic-art{margin-inline:7%}}

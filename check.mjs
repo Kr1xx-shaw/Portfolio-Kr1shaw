@@ -1,0 +1,8 @@
+import assert from 'node:assert/strict';import {handle} from './worker.mjs';
+const objects=new Map();const bucket={async list(){return {objects:[...objects.keys()].filter(k=>k.startsWith('projects/')).map(key=>({key})),truncated:false}},async put(k,v,o){objects.set(k,{v,o})},async get(k){const x=objects.get(k);return x?{text:async()=>x.v,body:x.v,httpMetadata:x.o?.httpMetadata}:null},async delete(k){objects.delete(k)}};
+const env={BUCKET:bucket};const origin='https://example.test';
+assert.equal((await handle(new Request(origin+'/api/projects',{method:'POST'}),env,{})).status,403);
+let f=new FormData();for(const [k,v] of Object.entries({title:'test',tags:'TEST',summary:'test summary',description:'test detail'}))f.set(k,v);f.append('images',new Blob([new Uint8Array([137,80,78,71,13,10,26,10])],{type:'image/png'}),'test.png');
+let req=new Request(origin+'/api/projects',{method:'POST',headers:{origin,'oai-authenticated-user-email':'qianzhihua7777@126.com'},body:f});let res=await handle(req,env,{});assert.equal(res.status,201);const p=await res.json();assert.equal(p.title,'test');assert.equal((await (await handle(new Request(origin+'/api/projects'),env,{})).json()).length,1);assert.equal((await handle(new Request(origin+p.cover),env,{})).status,200);
+f.set('images',new Blob(['<svg>unsafe</svg>'],{type:'image/svg+xml'}),'bad.svg');res=await handle(new Request(origin+'/api/projects',{method:'POST',headers:{origin,'oai-authenticated-user-email':'qianzhihua7777@126.com'},body:f}),env,{});assert.equal(res.status,400);
+console.log('PASS: owner authorization, persistent upload/list/read, unsupported file rejection.');

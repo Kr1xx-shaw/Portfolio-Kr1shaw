@@ -1,0 +1,68 @@
+.case-page:has(.st-section) .case-info{font-family:InterceptionSans,Arial,sans-serif}
+.case-page:has(.st-section) .case-info h1{font-family:InterceptionSans,Arial,sans-serif;letter-spacing:-.035em}
+.st-section{position:relative;background:#f6f2e7;color:#123c2b;font-family:InterceptionSans,Arial,sans-serif}
+.st-copy{padding:48px 6.5% 28px}.st-kicker{display:block;font-size:10px;line-height:1.5;letter-spacing:.09em;font-weight:700}
+.st-section h2{font:700 clamp(23px,2.7vw,44px)/1.13 InterceptionSans,Arial,sans-serif;letter-spacing:-.05em;margin:15px 0 18px;color:inherit}
+.st-copy>p{max-width:610px;font-size:13px;line-height:1.75;margin:0}
+.st-art{margin:0;min-width:0}.st-art img{display:block;width:100%;height:auto}.st-art figcaption{font-size:11px;font-weight:700;line-height:1.5;padding:12px 0 0}
+.st-visuals{display:grid;gap:22px;padding:0 6.5% 36px}
+.st-hero{background:#10281e;color:#f7f2e5}.st-hero .st-copy{position:absolute;z-index:1;top:14%;left:0;width:60%;padding:0 6.5%;text-shadow:0 2px 12px #0008}
+.st-hero .st-kicker{font-size:clamp(26px,3.5vw,56px);letter-spacing:-.055em;line-height:1.05}.st-hero h2{font-size:clamp(13px,1.4vw,22px);font-weight:400;letter-spacing:0;margin-top:15px}
+.st-hero .st-visuals,.st-mockup .st-visuals{padding:0}.st-hero img{width:100%;aspect-ratio:2457/1382;object-fit:cover}
+.st-steps{display:flex;gap:24px;padding:0 6.5% 32px;font-size:11px;font-weight:700;letter-spacing:.13em}.st-steps span+span:before{content:'—';padding-right:24px;font-weight:400}
+.st-intro .st-copy{padding-bottom:24px}.st-players .st-visuals{padding-bottom:45px}.st-players img{border-radius:0}
+.st-board{background:#10281e;color:#f7f2e5}.st-board .st-visuals{padding:0 6.5% 24px}.st-board .st-art img{height:auto;object-fit:contain;object-position:center}.st-board .st-steps{padding-top:15px;justify-content:center}
+.st-experience .st-visuals{grid-template-columns:1.3fr 1fr;align-items:start;gap:30px 24px}.st-experience img{border-radius:5px}
+.st-flow{background:#eef0e5}.st-flowchart{padding:4px 6.5% 48px;font-size:10px;line-height:1.55}
+.st-flow-start{display:flex;flex-direction:column;align-items:center;gap:15px;margin-bottom:30px}.st-flow-start span{padding:10px 24px;border:1px solid #a2b1a3;min-width:35%;text-align:center;font-weight:700}.st-flow-start span+span{position:relative}.st-flow-start span+span:before{content:'';position:absolute;left:50%;height:15px;top:-16px;border-left:1px solid #a2b1a3}
+.st-branches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-top:1px solid #a2b1a3;padding-top:24px}.st-branch{min-width:0}.st-branch h3{position:relative;font-size:11px;margin:0 0 18px;padding:10px 2px;border-bottom:1px solid #a2b1a3}.st-branch h3:before{content:'';height:24px;position:absolute;left:0;top:-24px;border-left:1px solid #a2b1a3}.st-branch ol{list-style:none;margin:0;padding:0}.st-branch li{padding:0 0 22px;position:relative;overflow-wrap:anywhere}.st-branch li:not(:last-child):after{content:'↓';display:block;font-size:12px;color:#7b8e7e;position:absolute;bottom:3px;left:0}.st-loop{border-block:1px solid #a2b1a3;display:flex;gap:18px;justify-content:space-between;padding:16px 0;margin-top:14px;font-weight:700}
+.st-drafts{background:#dfe5d5}.st-drafts .st-visuals{grid-template-columns:1fr 1fr;align-items:start;gap:26px 20px}.st-drafts img{aspect-ratio:433/244;object-fit:contain;background:#696969}.st-drafts figcaption{font-weight:400;color:#425d4a}
+.st-mockup{background:#10281e;color:#f7f2e5}.st-mockup .st-copy{padding-bottom:20px}
+@media(max-width:700px){.st-copy{padding:30px 7% 20px}.st-section h2{font-size:25px}.st-copy>p{font-size:12px}.st-kicker{font-size:9px}.st-hero .st-kicker{font-size:31px}.st-hero h2{font-size:13px}.st-flowchart{font-size:10px}.st-branches{grid-template-columns:1fr 1fr;gap:20px}.st-branch h3:before{display:none}.st-experience .st-visuals{grid-template-columns:1fr}.st-loop{flex-wrap:wrap}.st-steps{font-size:9px;gap:12px}.st-steps span+span:before{padding-right:12px}.st-drafts .st-visuals{gap:18px 12px}.st-art figcaption{font-size:10px}}
+
+/* Source artwork is exported from Illustrator, never enlarged from the old PDF thumbnails. */
+.st-copy{padding-top:48px;padding-bottom:28px}.st-section h2{max-width:640px}
+.st-players .st-visuals{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;padding-bottom:48px}
+.st-players .st-art img{width:100%;height:auto;border-radius:6px}.st-players figcaption{text-align:center;font-size:10px;letter-spacing:.08em}
+.st-experience .st-visuals{grid-template-columns:1fr 1fr;gap:32px 22px}
+.st-experience .st-art:first-child,.st-experience .st-art:last-child{grid-column:1/-1}
+.st-experience .st-art img{border-radius:0}.st-experience .st-art:first-child figcaption,.st-experience .st-art:last-child figcaption{padding-bottom:8px}
+.st-board .st-art img{border:8px solid #111;border-radius:26px;box-sizing:border-box}
+.st-branch:first-child li:after{display:none}.st-branch:first-child li{padding-bottom:24px}
+.st-flow .st-copy>p,.st-drafts .st-copy>p{max-width:540px}
+.st-flowchart{font-size:11px;line-height:1.6}.st-branch h3{font-size:12px}
+.st-drafts .st-visuals{gap:28px 22px}.st-drafts img{background:none}
+@media(max-width:700px){.st-players .st-visuals{grid-template-columns:1fr 1fr;gap:22px}.st-experience .st-visuals{grid-template-columns:1fr}.st-experience .st-art{grid-column:auto}.st-board .st-art img{border-width:5px;border-radius:16px}.st-flowchart{font-size:11px}}
+
+/* Approved small spacing reduction, replacement mockups and equal UI tiles. */
+.st-intro .st-copy{padding-top:40px;padding-bottom:20px}.st-intro .st-steps{padding-bottom:24px}
+.st-players .st-copy{padding-top:38px;padding-bottom:22px}.st-players .st-visuals{grid-template-columns:1fr;padding-bottom:36px;gap:0}
+.st-players .st-art img{border-radius:0}
+.st-board .st-art img{border:0;border-radius:0}
+.st-experience .st-visuals{grid-template-columns:1fr 1fr;gap:28px 22px;align-items:start}
+.st-experience .st-art:first-child,.st-experience .st-art:last-child{grid-column:auto}
+.st-experience .st-art img{aspect-ratio:2200/1015;object-fit:contain}
+.st-experience .st-art figcaption{padding:12px 0 0}
+.st-drafts .st-visuals{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px}
+@media(max-width:700px){.st-intro .st-copy{padding-top:26px;padding-bottom:16px}.st-intro .st-steps{padding-bottom:20px}.st-players .st-copy{padding-top:26px}.st-experience .st-visuals{grid-template-columns:1fr 1fr;gap:20px 12px}.st-drafts .st-visuals{grid-template-columns:1fr 1fr;gap:22px 12px}}
+
+/* Use the supplied images as the section surface, without a second colour frame. */
+.st-board,.st-players{background:transparent;container-type:inline-size}
+.st-board .st-visuals,.st-players .st-visuals{padding:0;display:block}
+.st-board .st-art,.st-players .st-art{margin:0}
+.st-board .st-art img,.st-players .st-art img{display:block;width:100%;height:auto;border:0;border-radius:0}
+.st-board .st-copy{position:absolute;z-index:1;left:0;top:0;right:0;padding:3.2% 6.5% 0;color:#f7f2e5;text-shadow:0 1px 3px #001b17}
+.st-board .st-kicker{font-size:clamp(8px,1.25cqw,12px)}
+.st-board h2{font-size:clamp(19px,3.4cqw,42px);margin:8px 0 10px;max-width:100%;line-height:1.1}
+.st-board .st-copy>p{max-width:80%;font-size:clamp(10px,1.4cqw,14px);line-height:1.55}
+.st-board .st-steps{position:absolute;z-index:1;bottom:3.4%;left:0;right:0;padding:0 6.5%;font-size:clamp(8px,1.2cqw,12px);color:#f7f2e5}
+.st-players .st-copy{position:absolute;z-index:1;left:0;top:0;right:0;padding:2.8% 6.5% 0;color:#123c2b}
+.st-players .st-kicker{font-size:clamp(8px,1.25cqw,12px)}
+.st-players h2{font-size:clamp(19px,3.5cqw,42px);line-height:1.1;margin:8px 0 0}
+.st-mockup .st-copy{padding:22px 6.5% 18px}.st-mockup h2{margin:8px 0 0}
+@media(max-width:700px){.st-board .st-art img{aspect-ratio:1.35;object-fit:cover;object-position:center}.st-board .st-copy{padding-top:4%}.st-board .st-copy>p{max-width:100%;font-size:10px;line-height:1.35}.st-players .st-art img{aspect-ratio:1.45;object-fit:cover;object-position:center}.st-players .st-copy{padding-top:4%}.st-players h2{font-size:19px}.st-mockup .st-copy{padding-top:18px;padding-bottom:15px}}
+
+/* Keep the title above the full-width character-card composition. */
+.st-players{border:0;background:#f6f2e7}
+.st-players .st-copy{position:relative;inset:auto;padding:18px 6.5% 12px}
+.st-players h2{margin:8px 0 0}

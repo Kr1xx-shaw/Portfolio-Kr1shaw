@@ -1,0 +1,13 @@
+Camera: Canon EOS RP – Mirrorless Camera 3D Model by fahadratul.
+https://sketchfab.com/3d-models/canon-eos-rp-mirrorless-camera-3d-model-cd470005397c48ec8b68bb8a4609ecd1
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+GLB distribution: sceneview/sceneview assets-v1, canon_eos_rp_v2, SHA256 ed79d5eef1939129d4724c12ead86897446e20cb68066510e30291162c1d6d78.
+Changes: image recompression, framing, studio lighting and scroll-controlled rear presentation.
+
+Three.js r180 — MIT license, copyright Three.js authors.
+https://github.com/mrdoob/three.js/blob/r180/LICENSE
+
+Figma, Codex, Suno and CapCut SVGs: Lobe Icons 1.102.0 — MIT license, copyright LobeHub.
+https://github.com/lobehub/lobe-icons
+Brand marks remain the property of their respective owners.
+Photoshop / Illustrator: text labels and brand-associated colors. Seedance: text label.

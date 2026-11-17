@@ -1,0 +1,86 @@
+@font-face{font-family:AboutSans;src:url('/assets/Inter-Regular.ttf') format('truetype');font-weight:400;font-display:swap}@font-face{font-family:AboutSans;src:url('/assets/Inter-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+.about-stage{position:relative;height:100dvh;min-height:480px;overflow:hidden;background:#ededed;color:#111;isolation:isolate;font-family:AboutSans,Arial,sans-serif}.about-artboard{position:absolute;width:1440px;height:792px;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--about-scale,1));transform-origin:center}.about-copy{position:absolute;inset:0;transition:filter .35s,opacity .35s;z-index:0}.about-stage p{margin:0}.about-location{position:absolute;left:702px;top:18px;width:220px;font-size:9px;line-height:1.12}.about-email{position:absolute;left:1254px;top:18px;font-size:8px;line-height:1.12}.about-shell{position:absolute;inset:0;pointer-events:none;z-index:8}.about-shell a{pointer-events:auto}.about-brand{position:absolute;left:17px;top:17px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:27px;font-weight:700;letter-spacing:-.055em;line-height:1.12}.about-copyright{position:absolute;left:53px;top:17px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px;line-height:1.12}.about-menu-label{position:absolute;left:195px;top:18px;font-size:9px;color:#7a7a7a}.about-nav{position:absolute;left:195px;top:53px;display:flex;flex-direction:column;align-items:start;justify-content:start;overflow:visible;gap:0;pointer-events:auto}.about-nav a{font:700 19.6px/.99 PortfolioSerif,Georgia,serif;letter-spacing:-1.176px;color:#111;padding:0;border:0}.about-nav a:hover{color:#002fa7;border:0}.about-statement,.about-personal{position:absolute;font:700 18px/25.7px PortfolioSerif,Georgia,serif;letter-spacing:-.72px;color:#002fa7;opacity:.85}.about-statement{left:921px;top:41px;width:418px}.about-personal{left:921px;top:569px;width:346px;line-height:26px}.about-year{position:absolute;left:896px;top:288px;font:400 177px/.73 AboutSans,Arial,sans-serif;letter-spacing:-10.62px;opacity:.88;white-space:pre}.about-year span{display:block}.about-and{position:absolute;left:1096px;top:383px;color:#002fa7;opacity:.85;font:700 18px/25.7px PortfolioSerif,Georgia,serif;letter-spacing:-.72px}.about-education,.about-experience,.about-capabilities{position:absolute;top:602px;font-size:9.6px;line-height:1.12}.about-education{left:17px;width:245px}.about-experience{left:283px;width:240px}.about-capabilities{left:1290px;width:145px;transition:filter .35s,opacity .35s}.about-stage h2{font:400 9px/1.12 AboutSans,Arial,sans-serif;color:#7a7a7a;margin:0 0 30px}.about-education>div,.about-experience>div{margin-bottom:8px}.about-avatar-button{position:absolute;left:535px;top:209px;width:385px;height:577px;padding:0;border:0;background:none;z-index:4;transition:left .55s,width .55s,height .55s,top .55s;touch-action:manipulation}.about-avatar-button>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom;pointer-events:none;transition:opacity .25s}.about-avatar-tools{opacity:0}.about-click-hint{position:absolute;width:220px;text-align:center;left:calc(50% - 110px);top:-19px;font:bold italic 10px/1.12 AboutSans,Arial,sans-serif;z-index:2;pointer-events:none}.about-stage.is-preview .about-copy,.about-stage.is-preview .about-capabilities{filter:blur(5.6px);opacity:.48}.about-stage.is-tools .about-copy{opacity:0;pointer-events:none}.about-stage.is-tools .about-avatar-button{left:465px;top:200px;width:444px;height:592px}.about-stage.is-tools .about-avatar-intro{opacity:0}.about-stage.is-tools .about-avatar-tools{opacity:1}.about-stage.is-tools .about-click-hint{top:0}.about-tools-title{position:absolute;left:921px;top:723px;color:#002fa7;opacity:.85;font:700 18px/26px PortfolioSerif,Georgia,serif;letter-spacing:-.72px;z-index:6;margin:0;pointer-events:none}.about-orbit{position:absolute;inset:0;z-index:2;touch-action:none;cursor:grab}.about-orbit:active{cursor:grabbing}.orbit-icon{position:absolute;width:96px;height:99px;padding:0;border:0;background:none;transform-origin:center;will-change:left,top,transform,opacity;outline-offset:7px;touch-action:none}.orbit-bob{display:block;width:100%;height:100%;animation:tool-float 4s ease-in-out infinite;animation-delay:calc(var(--float-phase,0)*-.55s)}.orbit-icon:nth-child(2n){--float-phase:2}.orbit-icon:nth-child(3n){--float-phase:3}.orbit-icon.is-on-hand .orbit-bob{animation-duration:5s}.orbit-crop{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:24%;background:transparent}.orbit-crop img{position:absolute;top:-77.152318%;width:738.77551%;max-width:none;height:auto;pointer-events:none;user-select:none}.orbit-icon:focus-visible,.about-avatar-button:focus-visible{outline:1px solid #002fa7}.orbit-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.about-stage [hidden]{display:none!important}@keyframes tool-float{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
+@media(max-width:700px){.about-stage{height:auto;min-height:1650px}.about-artboard{position:relative;left:0;top:0;transform:none;width:100%;height:1650px}.about-brand{font-size:19px;left:12px;top:15px}.about-copyright{font-size:8px;left:36px;top:15px}.about-nav{left:78px;top:43px}.about-nav a{font-size:17px;letter-spacing:-1px}.about-menu-label{left:78px;top:17px;font-size:9px}.about-location{left:auto;right:15px;top:17px;width:auto;font-size:8px;text-align:right}.about-email{left:78px;top:125px;font-size:9px}.about-avatar-button{left:calc(50% - 128px);top:205px;width:256px;height:384px}.about-click-hint{font-size:9px;top:-25px}.about-statement{left:8%;top:625px;width:84%;font-size:15px;line-height:22px;letter-spacing:-.5px}.about-personal{left:8%;top:965px;width:84%;font-size:15px;line-height:22px}.about-year{left:9%;top:825px;font-size:110px;line-height:.73;letter-spacing:-6.6px;display:flex;gap:10px}.about-year span:nth-child(2){font-size:0}.about-year span:nth-child(2):after{content:'04';font-size:110px}.about-and{left:47%;top:840px;font-size:15px}.about-education,.about-experience{top:1150px;font-size:10px;line-height:1.4;width:42%}.about-education{left:8%}.about-experience{left:54%}.about-capabilities{left:8%;top:1455px;width:84%;font-size:10px;line-height:1.5}.about-stage h2{font-size:10px;margin-bottom:15px}.about-stage.is-tools{min-height:920px;height:100dvh}.about-stage.is-tools .about-artboard{height:920px;min-height:100dvh}.about-stage.is-tools .about-avatar-button{left:calc(50% - 190px);top:370px;width:380px;height:507px}.about-stage.is-tools .about-capabilities{left:63%;top:745px;width:34%;font-size:8px}.about-stage.is-tools .about-capabilities h2{font-size:9px}.about-tools-title{left:8%;top:795px;font-size:15px}.orbit-icon{width:70px;height:72px}.about-orbit{height:920px}.about-stage.is-preview .about-copy,.about-stage.is-preview .about-capabilities{filter:blur(3px)}.about-stage.is-tools .about-copy{display:none}}
+@media(prefers-reduced-motion:reduce){.about-copy,.about-capabilities,.about-avatar-button,.about-avatar-button>img{transition:none}.orbit-bob{animation:none}}
+
+.about-meta{position:absolute;inset:0;pointer-events:none;transition:filter .35s,opacity .35s;z-index:1}.about-meta a{pointer-events:auto}.about-stage.is-preview .about-meta{filter:blur(5.6px);opacity:.48}.about-artboard{user-select:none}.about-meta{user-select:text}@media(prefers-reduced-motion:reduce){.about-meta{transition:none}}
+
+@media(max-width:700px){.about-stage.is-tools{min-height:1090px}.about-stage.is-tools .about-artboard{height:1090px}.about-stage.is-tools .about-capabilities{left:8%;top:965px;width:84%;font-size:10px;line-height:1.4}.about-tools-title{top:900px}.about-stage.is-preview .about-meta{filter:blur(3px)}}
+
+/* Anchor the portrait to the viewport floor, accounting for artboard letterboxing. */
+@media(min-width:701px){
+ .about-avatar-button{top:calc(215px + var(--about-bottom-gap,0px))}
+ .about-stage.is-tools .about-avatar-button{top:calc(200px + var(--about-bottom-gap,0px))}
+}
+.about-stage.is-tools .about-click-hint{left:calc(62.25% - 110px)}
+.orbit-bob{display:flex;align-items:center;justify-content:center}
+.interest-crop{border-radius:0;flex:none}
+
+.about-stage.is-interests .orbit-icon{width:136px;height:136px}@media(max-width:700px){.about-stage.is-interests .orbit-icon{width:84px;height:84px}}
+
+/* Supplied texture sits underneath every About state, outside the intro copy. */
+.about-texture{position:absolute;left:276px;top:126px;width:1165px;height:calc(668px + var(--about-bottom-gap,0px));object-fit:fill;z-index:-1;pointer-events:none;user-select:none}
+.about-and{color:#ededed;opacity:1}
+@media(min-width:701px){.about-year{left:96px;top:220px}.about-and{left:296px;top:324px}}
+@media(max-width:700px){.about-texture{left:19.1667%;top:126px;width:80.8333%;height:calc(100% - 126px);object-fit:cover;object-position:left top}}
+
+/* Blur the complete background composition together, including its paper texture. */
+.about-backdrop{position:absolute;inset:0;z-index:0;transition:filter .35s,opacity .35s}
+.about-stage.is-preview .about-backdrop{filter:blur(5.6px);opacity:.48}
+.about-stage.is-preview .about-copy,.about-stage.is-preview .about-capabilities{filter:none;opacity:1}
+@media(max-width:700px){.about-stage.is-preview .about-backdrop{filter:blur(3px)}}
+@media(prefers-reduced-motion:reduce){.about-backdrop{transition:none}}
+
+.orbit-single{position:relative;display:block;width:100%;height:auto;overflow:hidden;flex:none;background:transparent}.orbit-single img{position:absolute;max-width:none;height:auto;pointer-events:none;user-select:none}
+
+/* Detail cards use the supplied paper art, with a fixed proportional photo window. */
+.hobby-detail{position:absolute;left:140px;top:106px;width:532px;height:647px;z-index:20;isolation:isolate;user-select:text;animation:hobby-card-enter .3s ease-out}
+.hobby-card-paper{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hobby-card-content{position:absolute;left:23.5%;top:.8%;width:70.5%;height:76%;transform:rotate(11.3deg);transform-origin:top left;box-sizing:border-box;padding:18px;display:flex;flex-direction:column;align-items:stretch;color:#171717}
+.hobby-card-photo{position:relative;width:100%;height:auto;aspect-ratio:339/235;flex:0 0 auto;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hobby-card-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.hobby-card-photo img.is-pretilted{position:absolute;left:50%;top:50%;width:112.7%;height:auto;max-width:none;transform:translate(-50%,-50%) rotate(-11.3deg)}
+.hobby-card-photo.is-empty{visibility:hidden}
+.about-stage .hobby-card-content h2{font:400 15px/1.2 AboutSans,Arial,sans-serif;color:#777;margin:14px 0 22px}
+.about-stage .hobby-card-description{font:400 11.5px/1.4 AboutSans,Arial,sans-serif;letter-spacing:0;margin:0}
+.hobby-card-close{align-self:flex-end;margin-top:auto;border:0;padding:12px 0 0;background:none;color:#171717;font:400 10px/1.2 AboutSans,Arial,sans-serif;cursor:pointer}
+.hobby-card-close:focus-visible{outline:1px solid #002fa7;outline-offset:5px}
+.about-stage.is-detail .about-backdrop{filter:blur(6px)}
+.about-stage.is-detail .site-meta{filter:blur(4px)}
+.about-stage.is-detail .about-avatar-button{transform:translateX(240px);pointer-events:none}
+.about-stage.is-detail .about-orbit .orbit-icon:not(.is-on-hand){visibility:hidden}
+.about-stage.is-detail .about-orbit .orbit-icon.is-on-hand{left:51.5%!important;pointer-events:none!important}
+.about-stage.is-detail .about-tools-title,.about-stage.is-detail .about-click-hint{visibility:hidden}
+@keyframes hobby-card-enter{from{opacity:0;translate:0 15px}to{opacity:1;translate:0 0}}
+@media(max-width:700px){
+ .hobby-detail{position:fixed;left:50%;top:50%;width:min(532px,96vw,78dvh);height:auto;aspect-ratio:532/647;transform:translate(-50%,-50%)}
+ .hobby-card-content{padding:3.4%}.hobby-card-photo{height:auto;flex-basis:auto}
+ .about-stage .hobby-card-content h2{font-size:clamp(11px,3.4vw,15px);margin:4% 0 5%}
+ .about-stage .hobby-card-description{font-size:clamp(9px,2.65vw,11.5px);line-height:1.35}
+ .hobby-card-close{font-size:10px}.about-stage.is-detail .about-avatar-button{transform:none;filter:blur(6px)}
+ .about-stage.is-detail .about-orbit{filter:blur(6px)}.about-stage.is-detail .site-chrome{filter:blur(4px)}
+}
+@media(prefers-reduced-motion:reduce){.hobby-detail{animation:none}}
+
+/* Icons must receive clicks above the transparent portrait image bounds. */
+.about-orbit{z-index:5;pointer-events:none}
+
+/* Fill the reference background area to the viewport edge, including wide screens. */
+@media(min-width:701px){
+ .about-texture{top:108px;width:calc(1164px + var(--about-side-gap,0px) + 12px);height:calc(684px + var(--about-bottom-gap,0px) + 12px)}
+}
+@media(max-width:700px){.about-texture{width:calc(80.8333% + 12px)}}
+
+.about-texture{background:#fff;overflow:hidden}.about-texture>canvas{pointer-events:none}
+
+/* The particle canvas is transparent over the existing page surface. */
+.about-texture{background:transparent}
+
+/* Let the individual text blocks blend against the actual animated background. */
+.about-copy{z-index:auto}
+.about-education,.about-experience,.about-capabilities,.about-and{color:#fff;mix-blend-mode:difference}
+.about-education h2,.about-experience h2,.about-capabilities h2{color:#fff}
+.about-and{opacity:1}
+
+/* Give difference blending the same neutral surface as the page. */
+.about-backdrop{background:#ededed}

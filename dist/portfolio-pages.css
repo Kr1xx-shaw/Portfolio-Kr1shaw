@@ -1,0 +1,59 @@
+@font-face{font-family:PortfolioSerif;src:url('/assets/LibreBaskerville-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+body.portfolio-mode{background:#000}body.portfolio-mode>header{display:none}.portfolio-track{height:calc(200dvh + 360dvh);background:#ededed}.portfolio-stage{height:100dvh;position:sticky;top:0;overflow:hidden;isolation:isolate}.work-surface{position:absolute;inset:0;background:#ededed;color:#151515;font:12px B,Arial,sans-serif}.landing-cover{position:absolute;inset:0;background:#000;z-index:20;will-change:transform;touch-action:pan-y}.hero-art{width:100%;aspect-ratio:1440/738.4615;position:absolute;top:50%;transform:translateY(-50%);container-type:inline-size}.hero-avatar{position:absolute;width:38.68056%;height:111.45%;left:43.4722%;top:-8.5313%;object-fit:contain}.hero-name{position:absolute;top:44.8229%;left:29.9306%;font-family:PortfolioSerif,Georgia,serif;font-weight:700;color:#002fa7;white-space:nowrap}.hero-name h1{font:inherit;font-size:11.4cqw;line-height:.79;letter-spacing:-.798cqw;margin:0}.hero-name p{font:inherit;font-size:2.4cqw;margin:0;line-height:1.35}.hero-enter{position:absolute;inset:0;width:100%;height:100%;cursor:grab}.hero-enter:active{cursor:grabbing}.hero-enter:focus-visible{outline:1px solid #002fa7;outline-offset:-8px}.vertical-brand{position:absolute;left:1.1%;top:1.8%;writing-mode:vertical-rl;transform:rotate(180deg);font-size:26px;line-height:1;font-weight:bold;letter-spacing:-.06em}.copyright{position:absolute;left:3.2%;top:2%;writing-mode:vertical-rl;font-size:9px}.menu-label{position:absolute;left:13.2%;top:2%;color:#777}.work-menu{position:absolute;display:flex;flex-direction:column;align-items:start;left:13.2%;top:7%;gap:0;overflow:visible}.work-menu a{font:700 clamp(16.15px,1.52vw,27.55px)/.96 PortfolioSerif,Georgia,serif;color:#151515;padding:0;border:0;letter-spacing:-.07em}.work-menu a:hover{color:#002fa7;border:0}.work-location{position:absolute;left:50%;top:2%;line-height:1.2}.work-email{position:absolute;right:1%;top:2%;font-size:11px}.work-meta{position:absolute;left:.8%;top:44%;width:34%;display:grid;grid-template-columns:37% 63%;gap:0;font-size:11px}.work-meta dl{display:grid;grid-template-columns:auto 1fr;gap:3px 18px;margin:0;align-content:start}.work-meta dt{color:#777}.work-meta dd{margin:0}.meta-context dt:nth-of-type(2),.meta-focus{margin-top:40px}.work-art{position:absolute;inset:0;pointer-events:none;perspective:1100px}.project-paper{position:absolute;left:38.5%;width:22%;height:34%;display:block;pointer-events:auto;transition:transform .65s cubic-bezier(.22,.75,.22,1),opacity .3s;transform:rotateY(-5deg) rotateZ(1deg);overflow:hidden}.project-paper img{width:100%;height:100%;display:block;object-fit:contain}.paper-current{top:34%;animation:paper-enter .65s cubic-bezier(.22,.75,.22,1)}.paper-before{top:-13%;left:48%;transform:rotateY(-12deg) rotateZ(5deg)}.paper-after{top:86%;left:23%;transform:rotateY(12deg) rotateZ(9deg)}.work-index{position:absolute;display:flex;flex-direction:column;justify-content:center;left:65%;top:10%;width:33%;height:80%;gap:0;overflow:visible}.work-index button{position:relative;flex:1;width:100%;color:#b9b9b9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px;transition:color .35s}.work-index strong{font:700 clamp(14.25px,1.52vw,26.6px)/1.1 PortfolioSerif,Georgia,serif;letter-spacing:-.06em;text-align:center}.index-category{font-size:10px;margin-bottom:7px;opacity:1}.index-rule{font-size:10px;margin:4px}.index-summary{font-size:11px;max-width:330px;text-align:center;line-height:1.3;display:block}.work-index .active{color:#111}.work-count{position:absolute;left:13.2%;bottom:1%;display:flex;align-items:start;gap:10px}.work-count>span{font-size:11px;color:#777;margin-top:18px}.work-count b{font:400 clamp(75px,8.6vw,150px)/1 B,Arial,sans-serif;letter-spacing:-.1em}.work-count small{margin-top:18px}.view-project{position:absolute;right:1%;bottom:2%;font-size:11px;text-decoration:underline}.work-scroll{position:absolute;left:.8%;bottom:2%;font-size:11px;color:#777}.work-controls{position:absolute;left:60%;bottom:2%;display:flex;gap:10px}.work-controls button{color:#151515;min-width:35px;min-height:35px;border:1px solid #bbb}.work-controls button:disabled{opacity:.25}.work-owner{position:absolute;left:1%;bottom:7%;font-size:10px;color:#888}.work-surface a:focus-visible,.work-surface button:focus-visible{outline:1px solid #002fa7}.work-surface button:hover{color:#002fa7}@keyframes paper-enter{from{opacity:.2;transform:translateY(35px) rotateY(-15deg) rotateZ(-3deg)}to{opacity:1;transform:rotateY(-5deg) rotateZ(1deg)}}
+@media(max-width:700px){.hero-art{width:150%;left:-25%}.hero-avatar{left:43.4722%}.hero-name{left:20%}.vertical-brand{font-size:18px}.copyright{left:6%;font-size:8px}.menu-label{left:13%;font-size:10px}.work-menu{left:13%;top:7%}.work-menu a{font-size:16.15px}.work-location{left:auto;right:4%;font-size:9px}.work-email{top:auto;bottom:2%;right:3%;font-size:9px}.work-meta{left:13%;top:24%;width:80%;font-size:9px;grid-template-columns:50% 50%}.meta-context dt:nth-of-type(2),.meta-focus{margin-top:8px}.project-paper{left:21%;width:58%;height:37%}.paper-current{top:34%}.paper-before,.paper-after{display:none}.work-index{left:12%;width:84%;top:73%;height:15%;display:grid;grid-template-columns:repeat(3,1fr)}.work-index button{min-height:44px;padding:4px}.work-index strong{font-size:10.45px;letter-spacing:-.04em}.index-category,.index-rule,.index-summary,.work-index .active .index-summary{display:none}.work-count{left:12%;bottom:4%}.work-count b{font-size:40px}.work-count>span,.work-count small{font-size:9px;margin-top:8px}.work-controls{left:auto;right:5%;bottom:6%}.view-project{right:5%;bottom:12%;font-size:10px}.work-scroll,.work-owner{display:none}}
+/* Blend the live counter with the artwork beneath it, including moving papers. */
+.work-surface{isolation:isolate}.work-count{color:#fff;mix-blend-mode:difference;pointer-events:none}.work-count b,.work-count small{color:#fff}.work-count>span{color:#858585}
+@media(prefers-reduced-motion:reduce){.project-paper{animation:none!important;transition:none!important}}
+
+.work-index button:hover{color:#777}.work-index button.active:hover{color:#111}
+
+/* Homepage composition follows the supplied 774 × 396 reference. */
+.landing-cover{background:#000 url('/assets/home-paper-texture-web.webp') center/100% 100% no-repeat}
+.hero-art{left:0;top:0;width:100%;height:100%;aspect-ratio:auto;transform:none}
+.hero-avatar{left:49%;top:-8.5313%;width:auto;height:111.45%;max-width:none}
+.hero-name{left:6.46%;top:35.34%;width:50%}
+.hero-name p{text-align:right}
+@media(max-width:700px){
+ .hero-art{left:-25%;top:50%;width:150%;height:auto;aspect-ratio:1440/738.4615;transform:translateY(-50%)}
+ .hero-name{left:20%}
+}
+
+/* Keep the name stationary above the moving portrait/background cover. */
+.hero-title-layer{position:absolute;inset:0;z-index:21;pointer-events:none;will-change:filter,opacity}
+@media(prefers-reduced-motion:reduce){.hero-title-layer{filter:none!important}}
+
+/* Procedural paper background replaces the downloaded texture. */
+.landing-cover{background:#fff}.hero-paper-background{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+
+.landing-cover{background:#ededed}.hero-paper-background{background:transparent}
+
+/* Keep the inverted counter above transformed artwork, within the Work blend group. */
+.work-art{z-index:1}.work-count{z-index:3;mix-blend-mode:difference;color:#fff}.work-count b,.work-count small{color:#fff}
+
+/* Keep the approved desktop proportions when the viewport grows beyond 1920px. */
+@media(min-width:1920px){
+ .work-surface{font-size:.625vw}
+ .work-meta{font-size:.572917vw}
+ .work-meta dl{gap:.15625vw .9375vw}
+ .meta-context dt:nth-of-type(2),.meta-focus{margin-top:2.083333vw}
+ .work-index strong{font-size:1.385417vw}
+ .index-category{font-size:.520833vw;margin-bottom:.364583vw}
+ .index-rule{font-size:.520833vw;margin:.208333vw}
+ .index-summary{font-size:.572917vw;max-width:17.1875vw}
+ .work-count{gap:.520833vw}
+ .work-count>span,.work-count small{margin-top:.9375vw;font-size:.572917vw}
+ .work-count b{font-size:7.8125vw}
+ .work-scroll,.view-project{font-size:.572917vw}
+ .work-owner{font-size:.520833vw}
+}
+
+/* Persistent covers follow one continuous 3D path; the index follows the same progress. */
+.portfolio-stage{overflow:clip}
+.project-paper{top:34%;animation:none;transition:none;will-change:transform;backface-visibility:hidden;transform-origin:center;touch-action:pan-y}
+.work-art{perspective:max(1100px,76vw)}
+@media(min-width:701px){
+ .work-index{display:block;overflow:visible}
+ .work-index button{position:absolute;left:0;top:50%;height:auto;min-height:100px;color:#111;will-change:transform;transition:none;touch-action:pan-y}
+ .work-index .active,.work-index button:hover,.work-index button.active:hover{color:#111}
+}
+@media(prefers-reduced-motion:reduce){.project-paper,.work-index button{will-change:auto}}
