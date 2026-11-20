@@ -19,8 +19,10 @@ const sectionMarkup=(s,i)=>{
 export function mountProjectPage(app,p){
  const sectioned=Array.isArray(p.caseSections),sections=sectioned?p.caseSections:[];
  const pictures=p.imagesPending?[]:(p.gallery||[]),reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const video=p.video?renderProjectVideo(p):'';
+ const layout=video?'video-case':sectioned?(p.id==='reheaven'?'reheaven-case':p.id==='hypertype'?'hypertype-case':'wass-case'):'';
  document.body.classList.add('portfolio-mode','case-mode');
- app.innerHTML=`<article class="case-page ${sectioned?(p.id==='reheaven'?'reheaven-case':p.id==='hypertype'?'hypertype-case':'wass-case'):''}" aria-label="${esc(p.title)} 作品详情">${portfolioShell('work')}<aside class="case-info"><h1>${esc(p.title)}</h1><dl><div class="case-about-row"><dt>About</dt><dd><p>${esc(p.summary)}</p>${(p.description||[]).map(t=>`<p>${esc(t)}</p>`).join('')}</dd></div><div><dt>Role</dt><dd>${esc(p.tags).split(' / ').join('<br>')}</dd></div></dl><a class="case-back" href="/work">Back to work →</a></aside><div class="case-gallery">${sectioned?sections.map((s,i)=>sectionMarkup(s,i)).join(''):pictures.length?pictures.map((g,i)=>`<figure class="case-figure" id="case-image-${i+1}"><img src="${esc(asset(g[0]))}" alt="${esc(g[1])}" width="1800" height="1350" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async"></figure>`).join(''):'<p class="case-empty">Project images coming soon.</p>'}<a class="case-gallery-back" href="/work">Back to work →</a></div>${pictures.length?`<nav class="case-thumbnails" aria-label="项目图片导航">${pictures.map((g,i)=>`<button type="button" data-image="${i}" aria-label="跳转到第 ${i+1} 张：${esc(g[1])}"><img src="${esc(asset(sectioned?g[0]+'-thumb':g[0]))}" alt="" width="160" height="120" decoding="async"></button>`).join('')}</nav>`:''}<span class="case-scroll">Scroll</span></article>`;
+ app.innerHTML=`<article class="case-page ${layout}" aria-label="${esc(p.title)} 作品详情">${portfolioShell('work')}<aside class="case-info"><h1>${esc(p.title)}</h1><dl><div class="case-about-row"><dt>About</dt><dd><p>${esc(p.summary)}</p>${(p.description||[]).map(t=>`<p>${esc(t)}</p>`).join('')}</dd></div><div><dt>Role</dt><dd>${esc(p.tags).split(' / ').join('<br>')}</dd></div></dl><a class="case-back" href="/work">Back to work →</a></aside><div class="case-gallery">${video|| (sectioned?sections.map((s,i)=>sectionMarkup(s,i)).join(''):pictures.length?pictures.map((g,i)=>`<figure class="case-figure" id="case-image-${i+1}"><img src="${esc(asset(g[0]))}" alt="${esc(g[1])}" width="1800" height="1350" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async"></figure>`).join(''):'<p class="case-empty">Project images coming soon.</p>')}<a class="case-gallery-back" href="/work">Back to work →</a></div>${pictures.length?`<nav class="case-thumbnails" aria-label="项目图片导航">${pictures.map((g,i)=>`<button type="button" data-image="${i}" aria-label="跳转到第 ${i+1} 张：${esc(g[1])}"><img src="${esc(asset(sectioned?g[0]+'-thumb':g[0]))}" alt="" width="160" height="120" decoding="async"></button>`).join('')}</nav>`:''}<span class="case-scroll">Scroll</span></article>`;
  const figures=[...app.querySelectorAll(sectioned?'.wass-section[id]':'.case-figure')],buttons=[...app.querySelectorAll('.case-thumbnails button')];
  let frame=0,disposed=false,active=-1;
  function sync(){
@@ -39,4 +41,10 @@ export function mountProjectPage(app,p){
  figures.forEach(n=>n.querySelector('img')?.addEventListener('load',schedule));
  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);sync();
  return ()=>{disposed=true;cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);document.body.classList.remove('portfolio-mode','case-mode')};
+}
+
+function renderProjectVideo(project){
+ const poster=esc(asset(project.cover));
+ const source=esc(project.video);
+ return `<figure class="case-figure"><video class="case-video" controls playsinline preload="none" poster="${poster}" width="1280" height="720" aria-label="${esc(project.title)}"><source src="${source}" type="video/mp4"><a href="${source}">Download video</a></video></figure>`;
 }

@@ -7,6 +7,8 @@
 .case-back{display:inline-block;margin:0 0 14px 26.5%;font-size:16px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .case-gallery{width:44.6%;margin-left:27.3%;padding-top:max(54px,4.8dvh);padding-bottom:8dvh}
 .case-figure{margin:0 0 8.8dvh;scroll-margin-top:54px}.case-figure img{display:block;width:100%;height:auto;background:transparent}
+.video-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px}
+.case-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#171717}
 .case-gallery-back{display:block;font-size:12px;text-align:center;text-decoration:underline;text-underline-offset:3px;margin:4dvh 0}
 .case-thumbnails{position:fixed;left:auto;right:2.4%;top:50%;transform:translateY(-50%);width:clamp(36px,3.25vw,62px);max-height:66dvh;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:5px;overflow:auto;padding:4px;z-index:10;flex:initial;scrollbar-width:none}
 .case-thumbnails button{display:block;flex:none;width:100%;padding:0;opacity:.55;transition:opacity .2s;outline-offset:2px}
@@ -26,6 +28,7 @@
  body.case-mode .language-toggle{left:auto;right:7%;top:16px}
  .case-info h1{margin:0 0 26px;font-size:24px}.case-info dl>div{grid-template-columns:20% 80%;margin-bottom:24px}.case-back{margin-left:20%;font-size:13px}
  .case-gallery{width:auto;margin:0 7%;padding-top:0;padding-bottom:55px}.case-figure{margin-bottom:32px}
+ .video-case .case-gallery{width:auto;margin:0 7%;padding-top:0}
  .case-thumbnails{left:7%;right:7%;bottom:44px;top:auto;transform:none;width:auto;max-height:58px;flex-direction:row;justify-content:center;gap:8px;padding:5px 8px;background:#edededee}
  .case-thumbnails button{width:42px}.case-scroll{display:none}.case-empty{padding-top:20px;min-height:30dvh}
 }

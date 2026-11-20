@@ -1,6 +1,10 @@
 (()=>{
  'use strict';
  const pairs=[
+["AI Short Drama","AI 短剧"],
+["I designed a workflow for the company to generate images in a consistent visual style and built a video generation skill based on Seedance 2.0–2.5 prompt templates.","为公司设计统一画风的生图流程，并基于 Seedance 2.0–2.5 提示词模板开发视频生成 Skill。"],
+["VISUAL DEVELOPMENT","视觉开发"],
+["AI VIDEO","AI 视频"],
 ["An environmental nonprofit brand raising awareness of the harms of microplastics.","一个旨在让公众了解微塑料危害的环保公益品牌。"],
 ["ReHeaven uses a monochrome visual identity, illustrations and packaging to make the harms of microplastics more visible.","ReHeaven 通过黑白视觉识别、插画与包装设计，让微塑料的危害更直观可见。"],
 ["ENVIRONMENTAL BRAND","环保公益品牌"],
