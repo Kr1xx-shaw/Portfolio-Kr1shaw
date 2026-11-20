@@ -1,6 +1,6 @@
 /* ReHeaven: artwork-led sequence matching the supplied reference. */
-.reheaven-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px;background:#fff}
-.reheaven-case .rh-section{margin:0 0 clamp(8px,1vw,16px);background:#fff}
+.reheaven-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px;background:transparent}
+.reheaven-case .rh-section{margin:0 0 clamp(8px,1vw,16px);background:transparent}
 .reheaven-case .rh-section img{display:block;width:100%;height:auto}
 .reheaven-case .rh-illustrations img{width:65%;margin-left:auto}
 @media(max-width:700px){
