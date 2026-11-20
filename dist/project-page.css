@@ -8,7 +8,20 @@
 .case-gallery{width:44.6%;margin-left:27.3%;padding-top:max(54px,4.8dvh);padding-bottom:8dvh}
 .case-figure{margin:0 0 8.8dvh;scroll-margin-top:54px}.case-figure img{display:block;width:100%;height:auto;background:transparent}
 .video-case .case-gallery{width:58%;margin-left:27.3%;padding-top:60px}
-.case-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#171717}
+.case-film-player{margin-bottom:24px}
+.case-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#171819}
+.case-film-selector h2{margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid #bcbcbc;font:700 13px/1.2 B,Arial,sans-serif}
+.case-film-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,2vw,28px)}
+.case-film-choice{display:grid;grid-template-columns:36% minmax(0,1fr) auto;align-items:center;gap:clamp(6px,1.1vw,16px);min-width:0;padding:clamp(6px,.9vw,12px);text-align:left;color:inherit;border:1px solid transparent;border-bottom-color:#bcbcbc;cursor:pointer}
+.case-film-choice[aria-pressed="true"],.case-film-choice:hover{border-color:#151515}
+.case-film-choice:focus-visible{outline:1px solid #002fa7}
+.case-film-preview{display:block;background:#171819;aspect-ratio:16/9}
+.case-film-preview img{display:block;width:100%;height:100%;object-fit:contain}
+.case-film-copy{min-width:0}
+.case-film-copy strong{display:block;font-size:clamp(12px,1.2vw,18px)}
+.case-film-meta{display:flex;gap:.45em;margin-top:7px;color:#606060;font-size:clamp(9px,.85vw,13px)}
+.case-film-selected{display:none;color:#606060;font-size:clamp(9px,.8vw,12px)}
+.case-film-choice[aria-pressed="true"] .case-film-selected{display:block}
 .case-gallery-back{display:block;font-size:12px;text-align:center;text-decoration:underline;text-underline-offset:3px;margin:4dvh 0}
 .case-thumbnails{position:fixed;left:auto;right:2.4%;top:50%;transform:translateY(-50%);width:clamp(36px,3.25vw,62px);max-height:66dvh;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:5px;overflow:auto;padding:4px;z-index:10;flex:initial;scrollbar-width:none}
 .case-thumbnails button{display:block;flex:none;width:100%;padding:0;opacity:.55;transition:opacity .2s;outline-offset:2px}
@@ -29,6 +42,9 @@
  .case-info h1{margin:0 0 26px;font-size:24px}.case-info dl>div{grid-template-columns:20% 80%;margin-bottom:24px}.case-back{margin-left:20%;font-size:13px}
  .case-gallery{width:auto;margin:0 7%;padding-top:0;padding-bottom:55px}.case-figure{margin-bottom:32px}
  .video-case .case-gallery{width:auto;margin:0 7%;padding-top:0}
+ .video-case .case-film-player{margin-bottom:18px}
+ .case-film-choice{grid-template-columns:37% minmax(0,1fr)}
+ .case-film-choice[aria-pressed="true"] .case-film-selected{display:none}
  .case-thumbnails{left:7%;right:7%;bottom:44px;top:auto;transform:none;width:auto;max-height:58px;flex-direction:row;justify-content:center;gap:8px;padding:5px 8px;background:#edededee}
  .case-thumbnails button{width:42px}.case-scroll{display:none}.case-empty{padding-top:20px;min-height:30dvh}
 }

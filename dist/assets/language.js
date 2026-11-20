@@ -2,6 +2,8 @@
  'use strict';
  const pairs=[
 ["AI Short Drama","AI 短剧"],
+["Films","短剧作品"],["Work 01","作品 01"],["Work 02","作品 02"],
+["Landscape","横屏"],["Portrait","竖屏"],["Selected","当前播放项"],["Download video","下载视频"],
 ["I designed a workflow for the company to generate images in a consistent visual style and built a video generation skill based on Seedance 2.0–2.5 prompt templates.","为公司设计统一画风的生图流程，并基于 Seedance 2.0–2.5 提示词模板开发视频生成 Skill。"],
 ["VISUAL DEVELOPMENT","视觉开发"],
 ["AI VIDEO","AI 视频"],

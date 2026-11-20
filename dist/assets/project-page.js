@@ -19,10 +19,12 @@ const sectionMarkup=(s,i)=>{
 export function mountProjectPage(app,p){
  const sectioned=Array.isArray(p.caseSections),sections=sectioned?p.caseSections:[];
  const pictures=p.imagesPending?[]:(p.gallery||[]),reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
- const video=p.video?renderProjectVideo(p):'';
+ const films=p.films??(p.video?[{title:p.title,poster:p.cover,source:p.video}]:[]);
+ const video=films.length?renderProjectVideo(films):'';
  const layout=video?'video-case':sectioned?(p.id==='reheaven'?'reheaven-case':p.id==='hypertype'?'hypertype-case':'wass-case'):'';
  document.body.classList.add('portfolio-mode','case-mode');
  app.innerHTML=`<article class="case-page ${layout}" aria-label="${esc(p.title)} 作品详情">${portfolioShell('work')}<aside class="case-info"><h1>${esc(p.title)}</h1><dl><div class="case-about-row"><dt>About</dt><dd><p>${esc(p.summary)}</p>${(p.description||[]).map(t=>`<p>${esc(t)}</p>`).join('')}</dd></div><div><dt>Role</dt><dd>${esc(p.tags).split(' / ').join('<br>')}</dd></div></dl><a class="case-back" href="/work">Back to work →</a></aside><div class="case-gallery">${video|| (sectioned?sections.map((s,i)=>sectionMarkup(s,i)).join(''):pictures.length?pictures.map((g,i)=>`<figure class="case-figure" id="case-image-${i+1}"><img src="${esc(asset(g[0]))}" alt="${esc(g[1])}" width="1800" height="1350" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async"></figure>`).join(''):'<p class="case-empty">Project images coming soon.</p>')}<a class="case-gallery-back" href="/work">Back to work →</a></div>${pictures.length?`<nav class="case-thumbnails" aria-label="项目图片导航">${pictures.map((g,i)=>`<button type="button" data-image="${i}" aria-label="跳转到第 ${i+1} 张：${esc(g[1])}"><img src="${esc(asset(sectioned?g[0]+'-thumb':g[0]))}" alt="" width="160" height="120" decoding="async"></button>`).join('')}</nav>`:''}<span class="case-scroll">Scroll</span></article>`;
+ if(films.length)bindFilmSelection(app,films);
  const figures=[...app.querySelectorAll(sectioned?'.wass-section[id]':'.case-figure')],buttons=[...app.querySelectorAll('.case-thumbnails button')];
  let frame=0,disposed=false,active=-1;
  function sync(){
@@ -43,8 +45,53 @@ export function mountProjectPage(app,p){
  return ()=>{disposed=true;cancelAnimationFrame(frame);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);document.body.classList.remove('portfolio-mode','case-mode')};
 }
 
-function renderProjectVideo(project){
- const poster=esc(asset(project.cover));
- const source=esc(project.video);
- return `<figure class="case-figure"><video class="case-video" controls playsinline preload="none" poster="${poster}" width="1280" height="720" aria-label="${esc(project.title)}"><source src="${source}" type="video/mp4"><a href="${source}">Download video</a></video></figure>`;
+function renderProjectVideo(films){
+ const first=films[0];
+ const poster=esc(asset(first.poster));
+ const source=esc(first.source);
+ const selector=films.length>1?`
+  <section class="case-film-selector" aria-labelledby="case-films-title">
+   <h2 id="case-films-title">Films</h2>
+   <div class="case-film-list">
+    ${films.map((film,i)=>`
+     <button type="button" class="case-film-choice" data-film="${i}" aria-controls="case-player" aria-pressed="${i===0}">
+      <span class="case-film-preview">
+       <img src="${esc(asset(film.poster))}" alt="" width="160" height="90" decoding="async">
+      </span>
+      <span class="case-film-copy">
+       <strong>${esc(film.title)}</strong>
+       <span class="case-film-meta"><span>${esc(film.format)}</span><span aria-hidden="true">·</span><span>${esc(film.duration)}</span></span>
+      </span>
+      <span class="case-film-selected" aria-hidden="true">Selected</span>
+     </button>`).join('')}
+   </div>
+  </section>`:'';
+ return `
+  <figure class="case-figure case-film-player">
+   <video id="case-player" class="case-video" controls playsinline preload="none" poster="${poster}" width="1280" height="720" aria-label="${esc(first.title)}">
+    <source src="${source}" type="video/mp4">
+    <a href="${source}" download target="_blank" rel="noopener">Download video</a>
+   </video>
+  </figure>
+  ${selector}`;
+}
+
+function bindFilmSelection(app,films){
+ const player=app.querySelector('.case-video');
+ const source=player.querySelector('source');
+ const download=player.querySelector('a');
+ const choices=app.querySelectorAll('.case-film-choice');
+ for(const choice of choices){
+  choice.addEventListener('click',()=>{
+   if(choice.getAttribute('aria-pressed')==='true')return;
+   const film=films[Number(choice.dataset.film)];
+   player.pause();
+   player.poster=asset(film.poster);
+   player.setAttribute('aria-label',film.title);
+   source.src=film.source;
+   download.href=film.source;
+   player.load();
+   for(const button of choices)button.setAttribute('aria-pressed',String(button===choice));
+  });
+ }
 }
