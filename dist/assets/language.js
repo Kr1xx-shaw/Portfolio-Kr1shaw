@@ -2,6 +2,12 @@
  'use strict';
  const pairs=[
 ["AI Short Drama","AI 短剧"],
+["Unreal Engine-Horror Lighting Practice","Unreal Engine 恐怖场景灯光练习"],
+["A horror lighting study in Unreal Engine, using saturated reds and hard shadows to build tension.","在 Unreal Engine 中进行的恐怖场景灯光练习，用高饱和红光和硬边阴影营造紧张感。"],
+["LIGHTING","灯光设计"],["UNREAL ENGINE","Unreal Engine"],
+["A dark portrait hall lit by a low amber light.","低处的琥珀色灯光照亮昏暗的肖像画大厅。"],
+["An Unreal Engine viewport of a red-lit stair landing.","Unreal Engine 视口中的红光楼梯平台。"],
+["An Unreal Engine viewport showing lights and camera guides in the stairwell.","Unreal Engine 视口中的楼梯间灯光与摄影机辅助线。"],
 ["Films","短剧作品"],["Work 01","作品 01"],["Work 02","作品 02"],
 ["Landscape","横屏"],["Portrait","竖屏"],["Selected","当前播放项"],["Download video","下载视频"],
 ["I designed a workflow for the company to generate images in a consistent visual style and built a video generation skill based on Seedance 2.0–2.5 prompt templates.","为公司设计统一画风的生图流程，并基于 Seedance 2.0–2.5 提示词模板开发视频生成 Skill。"],
